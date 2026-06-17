@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact - HBV The Jumpers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #0b1b3d;
+  --blue: #1e4272;
+  --orange: #e2702e;
+  --orange-light: #f18a4b;
+  --white: #fff;
+  --ink: #17223b;
+  --soft: #5d6880;
+  --line: rgba(11,27,61,0.12);
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: var(--ink);
+  font-family: "Mulish", Arial, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11,27,61,0.96);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+}
+.nav-inner {
+  width: min(1320px, calc(100% - 44px));
+  min-height: 82px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--white);
+}
+.brand img { width: 52px; height: 52px; object-fit: contain; }
+.brand-name {
+  display: block;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 0.94;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.brand-name small {
+  display: block;
+  margin-top: 5px;
+  color: var(--orange-light);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 2.5vw, 38px);
+  flex: 1;
+}
+.nav-item { position: relative; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.78);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.28s var(--ease), transform 0.28s var(--ease), background 0.28s var(--ease);
+}
+.nav-link:hover,
+.nav-link.active { color: var(--white); transform: translateY(-1px); }
+.nav-link.nav-sponsor {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: rgba(226,112,46,0.78);
+  color: var(--navy);
+}
+.nav-link.nav-sponsor:hover {
+  background: var(--orange-light);
+  color: var(--navy);
+}
+.chev {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+.dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  width: 250px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(11,27,61,0.98);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.26s var(--ease), transform 0.26s var(--ease), visibility 0.26s var(--ease);
+}
+.nav-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.dropdown a {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 6px;
+  color: rgba(255,255,255,0.76);
+  font-weight: 800;
+  font-size: 0.93rem;
+  transition: background 0.24s var(--ease), color 0.24s var(--ease), transform 0.24s var(--ease);
+}
+.dropdown a:hover {
+  background: rgba(226,112,46,0.16);
+  color: var(--white);
+  transform: translateX(3px);
+}
+.lang-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lang-hint {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+  max-width: 112px;
+  line-height: 1.3;
+}
+.lang {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+}
+.lang button {
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255,255,255,0.78);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 7px 9px;
+}
+.lang button.active {
+  background: var(--orange);
+  color: var(--navy);
+}
+.wrap {
+  width: min(1220px, calc(100% - 44px));
+  margin: 0 auto;
+}
+.hero {
+  min-height: 48vh;
+  display: grid;
+  align-items: center;
+  color: var(--white);
+  background:
+    linear-gradient(110deg, rgba(11,27,61,0.96), rgba(11,27,61,0.84) 58%, rgba(226,112,46,0.22)),
+    url("assets/court-intro.png") center/cover no-repeat;
+}
+.hero-inner {
+  padding: clamp(74px, 8vw, 116px) 0;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--orange-light);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 38px;
+  height: 3px;
+  background: currentColor;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+h1 {
+  max-width: 940px;
+  margin-top: 16px;
+  font-size: clamp(4.2rem, 8vw, 8.4rem);
+  line-height: 0.88;
+}
+h1 span,
+h2 span {
+  display: block;
+  color: var(--orange-light);
+}
+.hero p {
+  max-width: 720px;
+  margin: 24px 0 0;
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+  line-height: 1.75;
+}
+.section {
+  padding: clamp(70px, 8vw, 118px) 0;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+}
+.section-head {
+  max-width: 720px;
+}
+.section-head h2 {
+  margin-top: 12px;
+  color: var(--navy);
+  font-size: clamp(3.1rem, 5.4vw, 5.7rem);
+  line-height: 0.92;
+}
+.section-head p {
+  color: var(--soft);
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+.contact-card,
+.form-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 22px 64px rgba(11,27,61,0.1);
+}
+.contact-card {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  background: var(--line);
+}
+.contact-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  padding: 22px;
+  background: var(--white);
+}
+.icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(226,112,46,0.12);
+  color: var(--orange);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+.contact-row strong {
+  display: block;
+  color: var(--navy);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.contact-row span {
+  display: block;
+  margin-top: 5px;
+  color: var(--soft);
+  line-height: 1.55;
+}
+.form-card {
+  padding: clamp(24px, 4vw, 38px);
+}
+.form-card h2 {
+  color: var(--navy);
+  font-size: clamp(2.8rem, 4.6vw, 4.8rem);
+  line-height: 0.92;
+}
+.form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--navy);
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #f8fafc;
+  color: var(--ink);
+  font: inherit;
+  padding: 13px 14px;
+  outline: none;
+  transition: border-color 0.26s var(--ease), box-shadow 0.26s var(--ease), background 0.26s var(--ease);
+}
+textarea { min-height: 132px; resize: vertical; }
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(226,112,46,0.7);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(226,112,46,0.12);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 15px 24px;
+  border: 2px solid var(--orange);
+  border-radius: 7px;
+  background: var(--orange);
+  color: var(--navy);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1.03rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.34s var(--ease), background 0.34s var(--ease), box-shadow 0.34s var(--ease);
+}
+.btn:hover {
+  transform: translateY(-4px);
+  background: var(--orange-light);
+  box-shadow: 0 22px 54px rgba(226,112,46,0.24);
+}
+.small-note {
+  margin-top: 12px;
+  color: var(--soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(64px);
+  transition: opacity 1.35s var(--ease), transform 1.35s var(--ease);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 1120px) {
+  .nav-links { display: none; }
+  .lang-hint { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .nav-inner,
+  .wrap { width: min(100% - 30px, 1220px); }
+  .brand img { width: 44px; height: 44px; }
+  .brand-name { font-size: 1rem; }
+  .hero { min-height: auto; }
+  .hero-inner { padding: 60px 0; }
+  h1 { font-size: clamp(4rem, 18vw, 6.2rem); }
+  .form-row { grid-template-columns: 1fr; }
+  .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+<link rel="stylesheet" href="css/layout-consistency.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="homepage-voorbeeld.html">
+      <img src="assets/logo.png" alt="HBV The Jumpers logo" />
+      <span class="brand-name">HBV The Jumpers<small>Den Haag</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hoofdnavigatie">
+      <div class="nav-item">
+        <a class="nav-link" href="homepage-voorbeeld.html" data-nl="Home" data-en="Home">Home</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="onze-vereniging.html" data-nl="Over HBV The Jumpers" data-en="About HBV The Jumpers">Over HBV The Jumpers <span class="chev"></span></a>
+        <div class="dropdown">
+          <a href="onze-vereniging.html" data-nl="Onze vereniging" data-en="Our club">Onze vereniging</a>
+          <a href="geschiedenis.html" data-nl="Geschiedenis" data-en="History">Geschiedenis</a>
+          <a href="bestuur-commissies.html" data-nl="Bestuur & commissies" data-en="Board & committees">Bestuur & commissies</a>
+          <a href="documenten.html" data-nl="Documenten" data-en="Documents">Documenten</a>
+          <a href="#" data-nl="Veilig sportklimaat" data-en="Safe sports climate">Veilig sportklimaat</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#" data-nl="Lid worden" data-en="Join us">Lid worden <span class="chev"></span></a>
+        <div class="dropdown">
+          <a href="#" data-nl="Proeftraining aanvragen" data-en="Request a trial practice">Proeftraining aanvragen</a>
+          <a href="#" data-nl="Contributie" data-en="Fees">Contributie</a>
+          <a href="#" data-nl="Veelgestelde vragen" data-en="FAQ">Veelgestelde vragen</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link nav-sponsor" href="sponsoring.html" data-nl="Sponsor worden" data-en="Become a sponsor">Sponsor worden</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link active" href="contact.html" data-nl="Contact" data-en="Contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-wrap">
+        <span class="lang-hint" data-lang-hint>English? Use the button here.</span>
+        <div class="lang" role="group" aria-label="Taal kiezen">
+          <button type="button" class="active" data-set-lang="nl">NL</button>
+          <button type="button" data-set-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-inner reveal">
+      <span class="eyebrow" data-nl="Neem contact op" data-en="Get in touch">Neem contact op</span>
+      <h1 data-nl="We horen graag<span>van je</span>" data-en="We would love<span>to hear from you</span>">We horen graag<span>van je</span></h1>
+      <p data-nl="Heb je een vraag over proeftrainen, lid worden, sponsoring, vrijwilligerswerk of de vereniging? Stuur ons een bericht en we zorgen dat het bij de juiste persoon terechtkomt." data-en="Do you have a question about trial practices, membership, sponsorship, volunteering or the club? Send us a message and we will make sure it reaches the right person.">Heb je een vraag over proeftrainen, lid worden, sponsoring, vrijwilligerswerk of de vereniging? Stuur ons een bericht en we zorgen dat het bij de juiste persoon terechtkomt.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="section-head">
+          <span class="eyebrow" data-nl="Direct contact" data-en="Direct contact">Direct contact</span>
+          <h2 data-nl="Vind de juiste ingang" data-en="Find the right route">Vind de juiste ingang</h2>
+          <p data-nl="HBV The Jumpers is een vereniging van vrijwilligers. We proberen snel te reageren en verwijzen je vraag door naar het bestuur of de juiste commissie." data-en="HBV The Jumpers is a volunteer-run club. We try to respond quickly and forward your question to the board or the right committee.">HBV The Jumpers is een vereniging van vrijwilligers. We proberen snel te reageren en verwijzen je vraag door naar het bestuur of de juiste commissie.</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="icon">i</div>
+            <div><strong data-nl="Algemene vragen" data-en="General questions">Algemene vragen</strong><span>info@thejumpers.nl</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="icon">P</div>
+            <div><strong data-nl="Proeftraining" data-en="Trial practice">Proeftraining</strong><span data-nl="Voor nieuwe spelers, ouders en jeugd vanaf 5 jaar." data-en="For new players, parents and children from age 5.">Voor nieuwe spelers, ouders en jeugd vanaf 5 jaar.</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="icon">S</div>
+            <div><strong data-nl="Sponsoring" data-en="Sponsorship">Sponsoring</strong><span data-nl="Voor bedrijven en supporters die basketbal in Den Haag willen helpen groeien." data-en="For companies and supporters who want to help basketball grow in The Hague.">Voor bedrijven en supporters die basketbal in Den Haag willen helpen groeien.</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="icon">J</div>
+            <div><strong>Jump Inn</strong><span data-nl="Onze kantine en ontmoetingsplek binnen de clubcultuur." data-en="Our clubhouse and meeting place within the club culture.">Onze kantine en ontmoetingsplek binnen de clubcultuur.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <h2 data-nl="Stuur een bericht" data-en="Send a message">Stuur een bericht</h2>
+        <form class="form" id="contactForm">
+          <div class="form-row">
+            <div>
+              <label for="name" data-nl="Naam" data-en="Name">Naam</label>
+              <input id="name" name="name" type="text" data-nl-placeholder="Voor- en achternaam" data-en-placeholder="First and last name" placeholder="Voor- en achternaam" />
+            </div>
+            <div>
+              <label for="email" data-nl="E-mail" data-en="Email">E-mail</label>
+              <input id="email" name="email" type="email" placeholder="naam@example.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="subject" data-nl="Onderwerp" data-en="Subject">Onderwerp</label>
+              <select id="subject" name="subject">
+                <option data-nl="Proeftraining aanvragen" data-en="Request a trial practice">Proeftraining aanvragen</option>
+                <option data-nl="Lid worden" data-en="Become a member">Lid worden</option>
+                <option data-nl="Sponsor worden" data-en="Become a sponsor">Sponsor worden</option>
+                <option data-nl="Vrijwilligerswerk" data-en="Volunteering">Vrijwilligerswerk</option>
+                <option data-nl="Algemene vraag" data-en="General question">Algemene vraag</option>
+              </select>
+            </div>
+            <div>
+              <label for="phone" data-nl="Telefoon optioneel" data-en="Phone optional">Telefoon optioneel</label>
+              <input id="phone" name="phone" type="tel" placeholder="06 ..." />
+            </div>
+          </div>
+          <div>
+            <label for="message" data-nl="Bericht" data-en="Message">Bericht</label>
+            <textarea id="message" name="message" data-nl-placeholder="Waar kunnen we je mee helpen?" data-en-placeholder="How can we help you?" placeholder="Waar kunnen we je mee helpen?"></textarea>
+          </div>
+          <button class="btn" type="button" data-nl="Verstuur bericht" data-en="Send message">Verstuur bericht</button>
+          <p class="small-note" data-nl="Dit is een voorbeeldformulier voor de website-opzet. In Squarespace koppelen we dit straks aan het echte contactformulier of e-mailadres." data-en="This is a sample form for the website prototype. In Squarespace we will connect it to the real contact form or email address.">Dit is een voorbeeldformulier voor de website-opzet. In Squarespace koppelen we dit straks aan het echte contactformulier of e-mailadres.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var hint = document.querySelector("[data-lang-hint]");
+  var buttons = document.querySelectorAll("[data-set-lang]");
+
+  function setLanguage(lang) {
+    if (lang !== "nl" && lang !== "en") lang = "nl";
+    document.documentElement.lang = lang;
+    try {
+      localStorage.setItem("jumpers-language", lang);
+    } catch (err) {}
+    document.querySelectorAll("[data-nl]").forEach(function (el) {
+      var text = el.getAttribute("data-" + lang);
+      if (text) el.innerHTML = text;
+    });
+    document.querySelectorAll("[data-" + lang + "-placeholder]").forEach(function (el) {
+      el.setAttribute("placeholder", el.getAttribute("data-" + lang + "-placeholder"));
+    });
+    buttons.forEach(function (button) {
+      button.classList.toggle("active", button.getAttribute("data-set-lang") === lang);
+    });
+    if (hint) {
+      hint.textContent = lang === "nl"
+        ? "English? Use the button here."
+        : "Nederlands? Gebruik de knop hier.";
+    }
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setLanguage(button.getAttribute("data-set-lang"));
+    });
+  });
+
+  var savedLang = "nl";
+  try {
+    savedLang = localStorage.getItem("jumpers-language") || "nl";
+  } catch (err) {}
+  setLanguage(savedLang);
+
+  var revealItems = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    revealItems.forEach(function (item) { item.classList.add("in-view"); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+
+  revealItems.forEach(function (item) {
+    observer.observe(item);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Varianten &mdash; HBV The Jumpers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<style>
+  /* compact helpers scoped to the canvas mockups */
+  .vh { background: var(--navy); color:#fff; height:100%; position:relative; overflow:hidden; display:flex; }
+  .vh .court-lines { opacity:0.6; }
+  .v-eyebrow { font-family:var(--font-head); text-transform:uppercase; letter-spacing:0.2em; font-weight:700; font-size:0.62rem; color:var(--gold-bright); }
+  .v-h1 { font-family:var(--font-head); font-weight:900; text-transform:uppercase; letter-spacing:0.02em; line-height:0.94; color:#fff; margin:10px 0; }
+  .v-btn { font-family:var(--font-head); font-weight:800; text-transform:uppercase; letter-spacing:0.06em; font-size:0.64rem; padding:9px 16px; border-radius:6px; background:var(--gold); color:var(--navy); border:2px solid var(--gold); display:inline-block; }
+  .v-btn.ghost { background:transparent; color:#fff; border-color:rgba(255,255,255,0.4); }
+  .v-lead { color:rgba(255,255,255,0.72); font-size:0.72rem; line-height:1.55; }
+  .v-ph { background: repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 10px, rgba(255,255,255,0.02) 10px 20px), linear-gradient(135deg,#143063,#0E2148); display:flex; align-items:center; justify-content:center; }
+  .v-tag { font-family:"Courier New",monospace; font-size:0.56rem; color:rgba(255,255,255,0.8); background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.15); padding:4px 8px; border-radius:5px; }
+  .v-stats { display:flex; gap:18px; margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.12); }
+  .v-stats strong { font-family:var(--font-head); font-weight:900; font-size:1.2rem; color:var(--gold); display:block; line-height:1; }
+  .v-stats span { font-size:0.54rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6); }
+  .note { font-family:var(--font-body); font-size:0.82rem; color:#475; line-height:1.5; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard, DCPostIt } = window;
+
+function Check() {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{width:14,height:14,color:'var(--gold)',flexShrink:0,marginTop:2}}><path d="M20 6L9 17l-5-5"/></svg>;
+}
+
+/* ---------- HERO VARIANTS ---------- */
+function HeroSplit() {
+  return (
+    <div className="vh">
+      <div style={{flex:'1.05',padding:'30px 26px',display:'flex',flexDirection:'column',justifyContent:'center'}}>
+        <span className="v-eyebrow">Basketbal &middot; Den Haag</span>
+        <div className="v-h1" style={{fontSize:'2.1rem'}}>M&eacute;&eacute;r dan<br/>basketbal</div>
+        <p className="v-lead">E&eacute;n club, 25+ nationaliteiten, &eacute;&eacute;n doel: jongeren laten groeien.</p>
+        <div style={{display:'flex',gap:8,marginTop:14}}>
+          <span className="v-btn">Sponsorpakketten</span>
+          <span className="v-btn ghost">Ontdek de club</span>
+        </div>
+        <div className="v-stats">
+          <div><strong>25+</strong><span>Naties</span></div>
+          <div><strong>40</strong><span>Jaar</span></div>
+          <div><strong>300+</strong><span>Leden</span></div>
+        </div>
+      </div>
+      <div className="v-ph" style={{flex:'0.95',position:'relative'}}>
+        <div className="court-lines"></div>
+        <div style={{width:48,height:48,borderRadius:'50%',background:'var(--gold)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <svg viewBox="0 0 24 24" style={{width:18,height:18,fill:'var(--navy)',marginLeft:3}}><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span className="v-tag" style={{position:'absolute',left:12,bottom:12}}>VIDEO &middot; 't Zandje</span>
+      </div>
+    </div>
+  );
+}
+
+function HeroFullbleed() {
+  return (
+    <div className="vh v-ph" style={{alignItems:'center',justifyContent:'center',textAlign:'center'}}>
+      <div className="court-lines"></div>
+      <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,rgba(11,27,61,0.35),rgba(11,27,61,0.85))'}}></div>
+      <div style={{position:'relative',padding:'0 30px'}}>
+        <span className="v-eyebrow">HBV The Jumpers &middot; Den Haag</span>
+        <div className="v-h1" style={{fontSize:'2.6rem',margin:'12px 0'}}>Spring mee<br/>met de stad</div>
+        <p className="v-lead" style={{maxWidth:'30ch',margin:'0 auto 16px'}}>Word partner van de meest diverse basketbalclub van Den Haag.</p>
+        <div style={{display:'flex',gap:8,justifyContent:'center'}}>
+          <span className="v-btn">Word partner</span>
+          <span className="v-btn ghost">Bekijk de club</span>
+        </div>
+        <span className="v-tag" style={{position:'absolute',left:'50%',transform:'translateX(-50%)',bottom:-46}}>FULL-BLEED VIDEO &middot; achtergrond</span>
+      </div>
+    </div>
+  );
+}
+
+function HeroType() {
+  return (
+    <div className="vh" style={{flexDirection:'column',justifyContent:'space-between',padding:'28px 26px'}}>
+      <div className="court-lines"></div>
+      <div style={{position:'absolute',top:0,right:0,bottom:0,width:'42%',background:'linear-gradient(135deg,var(--court-orange),transparent)',opacity:0.18,clipPath:'polygon(40% 0,100% 0,100% 100%,0 100%)'}}></div>
+      <div style={{position:'relative'}}>
+        <span className="v-eyebrow">Sinds 1986</span>
+        <div className="v-h1" style={{fontSize:'3rem',letterSpacing:'-0.01em'}}>The<br/>Jumpers</div>
+      </div>
+      <div style={{position:'relative'}}>
+        <p className="v-lead" style={{maxWidth:'34ch'}}>25+ nationaliteiten. Drie vormen van de sport. E&eacute;n Haagse club.</p>
+        <div style={{display:'flex',gap:8,marginTop:12}}>
+          <span className="v-btn">Word partner</span>
+          <span className="v-btn ghost">Ons verhaal</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- SPONSOR CARD VARIANTS ---------- */
+function CardClassic() {
+  return (
+    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12,height:'100%',alignItems:'stretch'}}>
+      {[
+        {t:'Brons',c:'#B5764A',p:'&euro;500',hl:false},
+        {t:'Zilver',c:'#8E97A6',p:'&euro;1.500',hl:false},
+        {t:'Goud',c:'var(--gold)',p:'&euro;5.000',hl:true},
+      ].map((x,i)=>(
+        <div key={i} style={{background:x.hl?'var(--navy)':'#fff',border:`2px solid ${x.hl?'var(--navy)':'var(--line)'}`,borderRadius:14,padding:'18px 16px',display:'flex',flexDirection:'column',position:'relative'}}>
+          {x.hl && <span style={{position:'absolute',top:-10,left:'50%',transform:'translateX(-50%)',background:'var(--gold)',color:'var(--navy)',fontFamily:'var(--font-head)',fontWeight:800,fontSize:'0.5rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'4px 10px',borderRadius:20,whiteSpace:'nowrap'}}>Meest gekozen</span>}
+          <div style={{display:'flex',alignItems:'center',gap:6,fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.6rem',letterSpacing:'0.14em',textTransform:'uppercase',color:x.c}}><span style={{width:9,height:9,borderRadius:'50%',background:x.c}}></span>{x.t}</div>
+          <div style={{fontFamily:'var(--font-head)',fontWeight:900,fontSize:'1.5rem',color:x.hl?'var(--gold)':'var(--navy)',marginTop:10}}>{x.p}</div>
+          <div style={{display:'grid',gap:6,margin:'12px 0',flex:1}}>
+            {[1,2,3].map(k=>(<div key={k} style={{display:'flex',gap:6,fontSize:'0.6rem',color:x.hl?'rgba(255,255,255,0.75)':'var(--ink-soft)'}}><Check/><span style={{height:7,background:x.hl?'rgba(255,255,255,0.18)':'var(--line-soft)',borderRadius:3,flex:1,marginTop:3}}></span></div>))}
+          </div>
+          <span style={{fontFamily:'var(--font-head)',fontWeight:800,fontSize:'0.58rem',letterSpacing:'0.06em',textTransform:'uppercase',textAlign:'center',padding:'8px',borderRadius:6,background:x.hl?'var(--gold)':'transparent',color:x.hl?'var(--navy)':'var(--navy)',border:x.hl?'none':'2px solid var(--navy)'}}>Kies {x.t}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CardDark() {
+  return (
+    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12,height:'100%'}}>
+      {[
+        {t:'Brons',p:'&euro;500'},{t:'Zilver',p:'&euro;1.500'},{t:'Goud',p:'&euro;5.000'},
+      ].map((x,i)=>(
+        <div key={i} style={{background:'var(--navy-800,#0E2148)',border:'1px solid var(--gold)',borderRadius:14,padding:'18px 16px',display:'flex',flexDirection:'column'}}>
+          <div style={{fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.6rem',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--gold-bright)'}}>{x.t}</div>
+          <div style={{fontFamily:'var(--font-head)',fontWeight:900,fontSize:'1.5rem',color:'#fff',marginTop:8}}>{x.p}</div>
+          <div style={{fontSize:'0.55rem',color:'rgba(255,255,255,0.55)',letterSpacing:'0.08em',textTransform:'uppercase'}}>per seizoen</div>
+          <div style={{display:'grid',gap:6,margin:'12px 0',flex:1}}>
+            {[1,2,3].map(k=>(<div key={k} style={{display:'flex',gap:6}}><Check/><span style={{height:7,background:'rgba(255,255,255,0.14)',borderRadius:3,flex:1,marginTop:3}}></span></div>))}
+          </div>
+          <span style={{fontFamily:'var(--font-head)',fontWeight:800,fontSize:'0.58rem',letterSpacing:'0.06em',textTransform:'uppercase',textAlign:'center',padding:'8px',borderRadius:6,background:'var(--gold)',color:'var(--navy)'}}>Kies {x.t}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CardHorizontal() {
+  return (
+    <div style={{display:'grid',gap:10,height:'100%'}}>
+      {[
+        {t:'Brons',p:'&euro;500',d:'Buurtpartner',hl:false},
+        {t:'Zilver',p:'&euro;1.500',d:'Teampartner',hl:false},
+        {t:'Goud',p:'&euro;5.000',d:'ESG-partner',hl:true},
+      ].map((x,i)=>(
+        <div key={i} style={{background:x.hl?'var(--navy)':'#fff',border:`2px solid ${x.hl?'var(--gold)':'var(--line)'}`,borderRadius:12,padding:'14px 18px',display:'flex',alignItems:'center',gap:16}}>
+          <div style={{width:42,height:42,borderRadius:10,background:x.hl?'var(--gold)':'rgba(197,160,89,0.14)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+            <span style={{fontFamily:'var(--font-head)',fontWeight:900,fontSize:'1.1rem',color:x.hl?'var(--navy)':'var(--gold)'}}>{x.t[0]}</span>
+          </div>
+          <div style={{flex:1}}>
+            <div style={{fontFamily:'var(--font-head)',fontWeight:800,fontSize:'0.78rem',letterSpacing:'0.05em',textTransform:'uppercase',color:x.hl?'#fff':'var(--navy)'}}>{x.t} &middot; {x.d}</div>
+            <div style={{height:6,background:x.hl?'rgba(255,255,255,0.16)':'var(--line-soft)',borderRadius:3,marginTop:6,width:'70%'}}></div>
+          </div>
+          <div style={{fontFamily:'var(--font-head)',fontWeight:900,fontSize:'1.25rem',color:x.hl?'var(--gold)':'var(--navy)'}}>{x.p}</div>
+          <span style={{fontFamily:'var(--font-head)',fontWeight:800,fontSize:'0.56rem',letterSpacing:'0.06em',textTransform:'uppercase',padding:'8px 12px',borderRadius:6,background:x.hl?'var(--gold)':'var(--navy)',color:x.hl?'var(--navy)':'#fff'}}>Kies</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="hero" title="Impact Hero &mdash; varianten" subtitle="Drie richtingen voor de header van de homepage">
+        <DCArtboard id="hero-a" label="A &middot; Split-screen (huidige keuze)" width={620} height={360}><HeroSplit/></DCArtboard>
+        <DCArtboard id="hero-b" label="B &middot; Full-bleed video + overlay" width={620} height={360}><HeroFullbleed/></DCArtboard>
+        <DCArtboard id="hero-c" label="C &middot; Typografisch, diagonaal accent" width={620} height={360}><HeroType/></DCArtboard>
+        <DCPostIt>De briefing kiest voor A (split-screen met video rechts). B en C zijn alternatieven als er sterk beeld of juist g&eacute;&eacute;n video is.</DCPostIt>
+      </DCSection>
+
+      <DCSection id="cards" title="Sponsorpakketten &mdash; varianten" subtitle="Brons / Zilver / Goud, drie kaartstijlen">
+        <DCArtboard id="card-a" label="A &middot; Klassiek, Goud uitgelicht (huidige keuze)" width={620} height={300}><CardClassic/></DCArtboard>
+        <DCArtboard id="card-b" label="B &middot; Donker & uniform, gouden randen" width={620} height={300}><CardDark/></DCArtboard>
+        <DCArtboard id="card-c" label="C &middot; Horizontale rijen, compact" width={620} height={300}><CardHorizontal/></DCArtboard>
+        <DCPostIt>A staat live op de Sponsoring-pagina. B oogt premium/exclusief; C is compacter en scant snel &mdash; handig bij meer pakketten.</DCPostIt>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

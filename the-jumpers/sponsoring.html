@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sponsor worden - HBV The Jumpers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #0b1b3d;
+  --blue: #1e4272;
+  --blue-soft: #f2f6fb;
+  --orange: #e2702e;
+  --orange-light: #f18a4b;
+  --white: #fff;
+  --ink: #17223b;
+  --soft: #5d6880;
+  --line: rgba(11,27,61,0.12);
+  --shadow: 0 24px 70px rgba(11,27,61,0.16);
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: var(--ink);
+  font-family: "Mulish", Arial, sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(244,247,251,0.94), rgba(244,247,251,0.94)),
+    url("assets/court-intro.png") center/cover no-repeat;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11,27,61,0.96);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+}
+.nav-inner {
+  width: min(1320px, calc(100% - 44px));
+  margin: 0 auto;
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--white);
+}
+.brand img { width: 52px; height: 52px; object-fit: contain; }
+.brand-name {
+  display: block;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 0.94;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.brand-name small {
+  display: block;
+  margin-top: 5px;
+  color: var(--orange-light);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 2.5vw, 38px);
+  flex: 1;
+}
+.nav-item { position: relative; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.78);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.28s var(--ease), transform 0.28s var(--ease), background 0.28s var(--ease);
+}
+.nav-link:hover,
+.nav-link.active { color: var(--white); transform: translateY(-1px); }
+.nav-link.nav-sponsor {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: rgba(226,112,46,0.78);
+  color: var(--navy);
+}
+.nav-link.nav-sponsor:hover,
+.nav-link.nav-sponsor.active {
+  background: var(--orange-light);
+  color: var(--navy);
+}
+.chev {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+.dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  width: 250px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(11,27,61,0.98);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.26s var(--ease), transform 0.26s var(--ease), visibility 0.26s var(--ease);
+}
+.nav-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.dropdown a {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 6px;
+  color: rgba(255,255,255,0.76);
+  font-weight: 800;
+  font-size: 0.93rem;
+  transition: background 0.24s var(--ease), color 0.24s var(--ease), transform 0.24s var(--ease);
+}
+.dropdown a:hover,
+.dropdown a.active {
+  background: rgba(226,112,46,0.16);
+  color: var(--white);
+  transform: translateX(3px);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lang-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lang-hint {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+  max-width: 112px;
+  line-height: 1.3;
+}
+.lang {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+}
+.lang button {
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255,255,255,0.78);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 7px 9px;
+}
+.lang button.active {
+  background: var(--orange);
+  color: var(--navy);
+}
+.hero {
+  min-height: calc(100vh - 82px);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  color: var(--white);
+  background:
+    linear-gradient(110deg, rgba(11,27,61,0.96), rgba(11,27,61,0.84) 54%, rgba(226,112,46,0.24)),
+    url("assets/court-intro.png") center/cover no-repeat;
+}
+.hero-inner,
+.wrap {
+  width: min(1320px, calc(100% - 44px));
+  margin: 0 auto;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.75fr);
+  gap: clamp(36px, 6vw, 86px);
+  align-items: center;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--orange);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 38px;
+  height: 3px;
+  background: currentColor;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+h1 {
+  margin-top: 18px;
+  font-size: clamp(4.6rem, 8.4vw, 9rem);
+  line-height: 0.88;
+}
+h1 span,
+h2 span {
+  display: block;
+  color: var(--orange-light);
+}
+.lead {
+  margin: 26px 0 0;
+  max-width: 760px;
+  font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+  line-height: 1.78;
+}
+.hero-card {
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.22);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+.impact-line {
+  padding: 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+.impact-line strong {
+  display: block;
+  color: var(--orange-light);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 2.4rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.impact-line span {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.55;
+}
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 15px 24px;
+  border: 2px solid var(--orange);
+  border-radius: 7px;
+  background: var(--orange);
+  color: var(--navy);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 1.03rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 42px rgba(226,112,46,0.22);
+  transition: transform 0.34s var(--ease), background 0.34s var(--ease), color 0.34s var(--ease), box-shadow 0.34s var(--ease);
+}
+.btn:hover {
+  transform: translateY(-4px);
+  background: var(--orange-light);
+  box-shadow: 0 24px 56px rgba(226,112,46,0.34);
+}
+.btn.secondary {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,0.55);
+  box-shadow: none;
+}
+.btn.secondary:hover {
+  background: var(--white);
+  color: var(--navy);
+  border-color: var(--white);
+}
+.btn.dark {
+  color: var(--navy);
+  border-color: var(--orange);
+  background: var(--orange);
+}
+.section {
+  padding: clamp(76px, 8vw, 122px) 0;
+}
+.section.dark {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(226,112,46,0.2), transparent 26%),
+    linear-gradient(135deg, rgba(11,27,61,0.99), rgba(30,66,114,0.98));
+  color: var(--white);
+}
+.section-head {
+  max-width: 860px;
+  margin: 0 auto clamp(34px, 4vw, 54px);
+  text-align: center;
+}
+.section-head .eyebrow { justify-content: center; }
+.section-head .eyebrow::before { display: none; }
+.section-head h2 {
+  margin-top: 12px;
+  color: var(--navy);
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  line-height: 0.92;
+}
+.dark .section-head h2 { color: var(--white); }
+.section-head p {
+  margin: 18px auto 0;
+  max-width: 720px;
+  color: var(--soft);
+  font-size: 1.08rem;
+  line-height: 1.76;
+}
+.dark .section-head p { color: rgba(255,255,255,0.78); }
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.package {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 16px 48px rgba(11,27,61,0.09);
+  overflow: hidden;
+  transition: transform 0.42s var(--ease), box-shadow 0.42s var(--ease), border-color 0.42s var(--ease);
+}
+.package::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  background: linear-gradient(90deg, var(--orange), var(--blue));
+}
+.package:hover {
+  transform: translateY(-8px);
+  border-color: rgba(226,112,46,0.35);
+  box-shadow: var(--shadow);
+}
+.package.featured {
+  background: linear-gradient(180deg, var(--navy), #122a54);
+  color: var(--white);
+}
+.package h3 {
+  margin-top: 18px;
+  color: var(--navy);
+  font-size: 2.3rem;
+}
+.package.featured h3 { color: var(--white); }
+.tier {
+  width: max-content;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(226,112,46,0.12);
+  color: var(--orange);
+  font-weight: 900;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.price {
+  margin-top: 18px;
+  color: var(--orange);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+}
+.price small {
+  color: var(--soft);
+  font-family: "Mulish", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.package.featured .price small,
+.package.featured p,
+.package.featured li { color: rgba(255,255,255,0.78); }
+.package p {
+  color: var(--soft);
+  line-height: 1.65;
+}
+.package ul {
+  display: grid;
+  gap: 13px;
+  margin: 22px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+.package li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+.package .btn { margin-top: auto; width: 100%; }
+.package:not(.featured) .btn.secondary {
+  color: var(--navy);
+  border-color: var(--line);
+}
+.package:not(.featured) .btn.secondary:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(36px, 6vw, 86px);
+  align-items: center;
+}
+.visual-panel {
+  min-height: 520px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(11,27,61,0.88), rgba(226,112,46,0.44)),
+    url("assets/court-intro.png") center/cover no-repeat;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.visual-panel::after {
+  content: "HBV THE JUMPERS";
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  color: rgba(255,255,255,0.9);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: clamp(3rem, 5vw, 6rem);
+  font-weight: 900;
+  line-height: 0.86;
+  max-width: 6ch;
+}
+.copy h2 {
+  color: var(--navy);
+  font-size: clamp(3.2rem, 5.8vw, 6rem);
+  line-height: 0.92;
+}
+.copy p {
+  color: var(--soft);
+  font-size: 1.08rem;
+  line-height: 1.78;
+}
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+}
+.impact {
+  padding: 28px;
+  background: rgba(255,255,255,0.06);
+}
+.impact strong {
+  display: block;
+  color: var(--orange-light);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 3rem;
+  line-height: 0.9;
+}
+.impact span {
+  display: block;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.55;
+}
+.closing {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: clamp(34px, 6vw, 62px);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(11,27,61,0.95), rgba(30,66,114,0.92)),
+    url("assets/court-intro.png") center/cover no-repeat;
+  color: var(--white);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.closing h2 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.9;
+}
+.closing p {
+  margin: 18px auto 0;
+  max-width: 690px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.7;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(70px);
+  transition: opacity 1.35s var(--ease), transform 1.35s var(--ease);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 1120px) {
+  .nav-links { display: none; }
+  .lang-hint { display: none; }
+  .hero-grid,
+  .split { grid-template-columns: 1fr; }
+  .package-grid,
+  .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .nav-inner,
+  .hero-inner,
+  .wrap { width: min(100% - 30px, 1320px); }
+  .brand img { width: 44px; height: 44px; }
+  .brand-name { font-size: 1rem; }
+  .hero { min-height: auto; padding: 88px 0 70px; }
+  h1 { font-size: clamp(4rem, 18vw, 6.4rem); }
+  .package-grid,
+  .impact-grid { grid-template-columns: 1fr; }
+  .package { min-height: 0; }
+  .btn-row .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+<link rel="stylesheet" href="css/layout-consistency.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="homepage-voorbeeld.html">
+      <img src="assets/logo.png" alt="HBV The Jumpers logo" />
+      <span class="brand-name">HBV The Jumpers<small>Den Haag</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hoofdnavigatie">
+      <div class="nav-item">
+        <a class="nav-link" href="homepage-voorbeeld.html" data-nl="Home" data-en="Home">Home</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="onze-vereniging.html" data-nl="Over HBV The Jumpers" data-en="About HBV The Jumpers">Over HBV The Jumpers <span class="chev"></span></a>
+        <div class="dropdown">
+          <a href="onze-vereniging.html" data-nl="Onze vereniging" data-en="Our club">Onze vereniging</a>
+          <a href="geschiedenis.html" data-nl="Geschiedenis" data-en="History">Geschiedenis</a>
+          <a href="bestuur-commissies.html" data-nl="Bestuur & commissies" data-en="Board & committees">Bestuur & commissies</a>
+          <a href="documenten.html" data-nl="Documenten" data-en="Documents">Documenten</a>
+          <a href="#" data-nl="Veilig sportklimaat" data-en="Safe sports climate">Veilig sportklimaat</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#" data-nl="Lid worden" data-en="Join us">Lid worden <span class="chev"></span></a>
+        <div class="dropdown">
+          <a href="#" data-nl="Proeftraining aanvragen" data-en="Request a trial practice">Proeftraining aanvragen</a>
+          <a href="#" data-nl="Contributie" data-en="Fees">Contributie</a>
+          <a href="#" data-nl="Veelgestelde vragen" data-en="FAQ">Veelgestelde vragen</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link nav-sponsor active" href="sponsoring.html" data-nl="Sponsor worden" data-en="Become a sponsor">Sponsor worden</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="contact.html" data-nl="Contact" data-en="Contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-wrap">
+        <span class="lang-hint" data-lang-hint>English? Use the button here.</span>
+        <div class="lang" role="group" aria-label="Taal kiezen">
+          <button type="button" class="active" data-set-lang="nl">NL</button>
+          <button type="button" data-set-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div class="reveal">
+          <span class="eyebrow" data-nl="Sponsor worden" data-en="Become a sponsor">Sponsor worden</span>
+          <h1 data-nl="Help basketbal groeien<span>in Den Haag</span>" data-en="Help basketball grow<span>in The Hague</span>">Help basketbal groeien<span>in Den Haag</span></h1>
+          <p class="lead" data-nl="Als sponsor van HBV The Jumpers steun je meer dan een teamshirt of logo. Je helpt kinderen, jongeren en volwassenen een plek te vinden waar sport, plezier en verbondenheid samenkomen." data-en="As a sponsor of HBV The Jumpers, you support more than a team shirt or logo. You help children, young people and adults find a place where sport, joy and community come together.">Als sponsor van HBV The Jumpers steun je meer dan een teamshirt of logo. Je helpt kinderen, jongeren en volwassenen een plek te vinden waar sport, plezier en verbondenheid samenkomen.</p>
+          <div class="btn-row">
+            <a class="btn" href="contact.html" data-nl="Ik wil sponsor worden" data-en="I want to sponsor">Ik wil sponsor worden</a>
+            <a class="btn secondary" href="#pakketten" data-nl="Bekijk mogelijkheden" data-en="View options">Bekijk mogelijkheden</a>
+          </div>
+        </div>
+        <aside class="hero-card reveal" aria-label="Sponsorimpact">
+          <div class="impact-line">
+            <strong data-nl="Zichtbaar" data-en="Visible">Zichtbaar</strong>
+            <span data-nl="Logo, teamkoppeling of projectkoppeling binnen een groeiende Haagse vereniging." data-en="Logo, team connection or project partnership within a growing club in The Hague.">Logo, teamkoppeling of projectkoppeling binnen een groeiende Haagse vereniging.</span>
+          </div>
+          <div class="impact-line">
+            <strong data-nl="Maatschappelijk" data-en="Social impact">Maatschappelijk</strong>
+            <span data-nl="Je bijdrage helpt basketbal toegankelijk houden voor meer kinderen en gezinnen." data-en="Your contribution helps keep basketball accessible to more children and families.">Je bijdrage helpt basketbal toegankelijk houden voor meer kinderen en gezinnen.</span>
+          </div>
+          <div class="impact-line">
+            <strong data-nl="Lokaal" data-en="Local">Lokaal</strong>
+            <span data-nl="Samen bouwen we aan sport, ontmoeting en kansen in Den Haag." data-en="Together we build sport, connection and opportunity in The Hague.">Samen bouwen we aan sport, ontmoeting en kansen in Den Haag.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pakketten">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-nl="Mogelijkheden" data-en="Options">Mogelijkheden</span>
+        <h2 data-nl="Kies wat past" data-en="Choose what fits">Kies wat past</h2>
+        <p data-nl="Onderstaande pakketten zijn een startpunt. We denken graag mee over maatwerk, zeker wanneer jouw bedrijf een concreet team, project of maatschappelijk doel wil ondersteunen." data-en="The packages below are a starting point. We are happy to discuss custom options, especially if your company wants to support a specific team, project or social goal.">Onderstaande pakketten zijn een startpunt. We denken graag mee over maatwerk, zeker wanneer jouw bedrijf een concreet team, project of maatschappelijk doel wil ondersteunen.</p>
+      </div>
+
+      <div class="package-grid">
+        <article class="package reveal">
+          <span class="tier" data-nl="Brons" data-en="Bronze">Brons</span>
+          <h3 data-nl="Buurtpartner" data-en="Neighbourhood partner">Buurtpartner</h3>
+          <div class="price">&euro;500 <small data-nl="/ seizoen" data-en="/ season">/ seizoen</small></div>
+          <p data-nl="Voor lokale ondernemers die de jeugd en het verenigingsleven in Den Haag willen steunen." data-en="For local entrepreneurs who want to support youth and club life in The Hague.">Voor lokale ondernemers die de jeugd en het verenigingsleven in Den Haag willen steunen.</p>
+          <ul>
+            <li><span class="check">✓</span><span data-nl="Logo op de website" data-en="Logo on the website">Logo op de website</span></li>
+            <li><span class="check">✓</span><span data-nl="Vermelding op socials" data-en="Mention on socials">Vermelding op socials</span></li>
+            <li><span class="check">✓</span><span data-nl="Zichtbaarheid bij clubactiviteiten" data-en="Visibility during club activities">Zichtbaarheid bij clubactiviteiten</span></li>
+          </ul>
+          <a class="btn secondary" href="contact.html" data-nl="Bespreek Brons" data-en="Discuss Bronze">Bespreek Brons</a>
+        </article>
+
+        <article class="package reveal featured">
+          <span class="tier" data-nl="Zilver" data-en="Silver">Zilver</span>
+          <h3 data-nl="Teampartner" data-en="Team partner">Teampartner</h3>
+          <div class="price">&euro;1.500 <small data-nl="/ seizoen" data-en="/ season">/ seizoen</small></div>
+          <p data-nl="Voor bedrijven die zichtbaar verbonden willen zijn aan een team en de groei van spelers." data-en="For companies that want to be visibly connected to a team and the growth of players.">Voor bedrijven die zichtbaar verbonden willen zijn aan een team en de groei van spelers.</p>
+          <ul>
+            <li><span class="check">✓</span><span data-nl="Alles uit Brons" data-en="Everything in Bronze">Alles uit Brons</span></li>
+            <li><span class="check">✓</span><span data-nl="Teamkoppeling of shirtsponsoring" data-en="Team connection or shirt sponsorship">Teamkoppeling of shirtsponsoring</span></li>
+            <li><span class="check">✓</span><span data-nl="Uitnodiging voor sponsormomenten" data-en="Invitation to sponsor moments">Uitnodiging voor sponsormomenten</span></li>
+          </ul>
+          <a class="btn" href="contact.html" data-nl="Bespreek Zilver" data-en="Discuss Silver">Bespreek Zilver</a>
+        </article>
+
+        <article class="package reveal">
+          <span class="tier" data-nl="Goud" data-en="Gold">Goud</span>
+          <h3 data-nl="Clubpartner" data-en="Club partner">Clubpartner</h3>
+          <div class="price">&euro;5.000 <small data-nl="/ seizoen" data-en="/ season">/ seizoen</small></div>
+          <p data-nl="Voor partners die basketbal structureel willen helpen groeien en maatschappelijk verschil willen maken." data-en="For partners who want to help basketball grow structurally and make a social difference.">Voor partners die basketbal structureel willen helpen groeien en maatschappelijk verschil willen maken.</p>
+          <ul>
+            <li><span class="check">✓</span><span data-nl="Alles uit Zilver" data-en="Everything in Silver">Alles uit Zilver</span></li>
+            <li><span class="check">✓</span><span data-nl="Hoofdsponsor- of projectpositie" data-en="Main sponsor or project position">Hoofdsponsor- of projectpositie</span></li>
+            <li><span class="check">✓</span><span data-nl="Maatwerk rond zichtbaarheid en impact" data-en="Custom visibility and impact">Maatwerk rond zichtbaarheid en impact</span></li>
+          </ul>
+          <a class="btn secondary" href="contact.html" data-nl="Bespreek Goud" data-en="Discuss Gold">Bespreek Goud</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-nl="Waarom sponsor worden" data-en="Why sponsor">Waarom sponsor worden</span>
+        <h2 data-nl="Je investeert in mensen" data-en="You invest in people">Je investeert in mensen</h2>
+        <p data-nl="HBV The Jumpers is een vereniging van vrijwilligers voor vrijwilligers. Sponsoring helpt ons sport betaalbaar, zichtbaar en toekomstbestendig te houden." data-en="HBV The Jumpers is a club run by volunteers, for volunteers. Sponsorship helps us keep sport affordable, visible and future-proof.">HBV The Jumpers is een vereniging van vrijwilligers voor vrijwilligers. Sponsoring helpt ons sport betaalbaar, zichtbaar en toekomstbestendig te houden.</p>
+      </div>
+
+      <div class="impact-grid reveal">
+        <div class="impact"><strong>5+</strong><span data-nl="Iedereen vanaf 5 jaar is welkom om te basketballen." data-en="Everyone from age 5 is welcome to play basketball.">Iedereen vanaf 5 jaar is welkom om te basketballen.</span></div>
+        <div class="impact"><strong>60+</strong><span data-nl="Meer dan 60 jaar verenigingservaring in Den Haag." data-en="More than 60 years of club history in The Hague.">Meer dan 60 jaar verenigingservaring in Den Haag.</span></div>
+        <div class="impact"><strong>100%</strong><span data-nl="Gedreven door vrijwilligers, ouders en betrokken leden." data-en="Powered by volunteers, parents and committed members.">Gedreven door vrijwilligers, ouders en betrokken leden.</span></div>
+        <div class="impact"><strong>1</strong><span data-nl="Warme club waar sport en ontmoeting samenkomen." data-en="One warm club where sport and connection come together.">Warme club waar sport en ontmoeting samenkomen.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="visual-panel reveal" aria-hidden="true"></div>
+      <div class="copy reveal">
+        <span class="eyebrow" data-nl="Meer dan een logo" data-en="More than a logo">Meer dan een logo</span>
+        <h2 data-nl="Samen maken we basketbal mogelijk" data-en="Together we make basketball possible">Samen maken we basketbal mogelijk</h2>
+        <p data-nl="Een sponsorbijdrage kan zichtbaar zijn op shirts, online of bij activiteiten, maar de echte waarde zit in wat erdoor ontstaat: meer materiaal, betere ondersteuning en meer ruimte voor kinderen om mee te doen." data-en="A sponsor contribution can be visible on shirts, online or during activities, but the real value is what it creates: more equipment, better support and more opportunities for children to participate.">Een sponsorbijdrage kan zichtbaar zijn op shirts, online of bij activiteiten, maar de echte waarde zit in wat erdoor ontstaat: meer materiaal, betere ondersteuning en meer ruimte voor kinderen om mee te doen.</p>
+        <p data-nl="Wil je als bedrijf, familie of betrokken supporter iets betekenen voor basketbal in Den Haag? Dan maken we graag samen een vorm die past." data-en="Do you want to contribute to basketball in The Hague as a company, family or committed supporter? We would love to find a fitting form together.">Wil je als bedrijf, familie of betrokken supporter iets betekenen voor basketbal in Den Haag? Dan maken we graag samen een vorm die past.</p>
+        <div class="btn-row">
+          <a class="btn dark" href="contact.html" data-nl="Neem contact op" data-en="Contact us">Neem contact op</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="closing reveal">
+        <h2 data-nl="Klaar om mee te bouwen?" data-en="Ready to help build?">Klaar om mee te bouwen?</h2>
+        <p data-nl="Stuur ons een bericht en we nemen contact op om de mogelijkheden door te spreken. Laagdrempelig, persoonlijk en passend bij HBV The Jumpers." data-en="Send us a message and we will contact you to discuss the options. Accessible, personal and fitting for HBV The Jumpers.">Stuur ons een bericht en we nemen contact op om de mogelijkheden door te spreken. Laagdrempelig, persoonlijk en passend bij HBV The Jumpers.</p>
+        <div class="btn-row" style="justify-content:center">
+          <a class="btn" href="contact.html" data-nl="Ik wil sponsor worden" data-en="I want to sponsor">Ik wil sponsor worden</a>
+          <a class="btn secondary" href="homepage-voorbeeld.html" data-nl="Terug naar home" data-en="Back to home">Terug naar home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var hint = document.querySelector("[data-lang-hint]");
+  var buttons = document.querySelectorAll("[data-set-lang]");
+
+  function setLanguage(lang) {
+    if (lang !== "nl" && lang !== "en") lang = "nl";
+    document.documentElement.lang = lang;
+    try {
+      localStorage.setItem("jumpers-language", lang);
+    } catch (err) {}
+    document.querySelectorAll("[data-nl]").forEach(function (el) {
+      var text = el.getAttribute("data-" + lang);
+      if (text) el.innerHTML = text;
+    });
+    buttons.forEach(function (button) {
+      button.classList.toggle("active", button.getAttribute("data-set-lang") === lang);
+    });
+    if (hint) {
+      hint.textContent = lang === "nl"
+        ? "English? Use the button here."
+        : "Nederlands? Gebruik de knop hier.";
+    }
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setLanguage(button.getAttribute("data-set-lang"));
+    });
+  });
+
+  var savedLang = "nl";
+  try {
+    savedLang = localStorage.getItem("jumpers-language") || "nl";
+  } catch (err) {}
+  setLanguage(savedLang);
+
+  var revealItems = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    revealItems.forEach(function (item) { item.classList.add("in-view"); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+
+  revealItems.forEach(function (item) {
+    observer.observe(item);
+  });
+})();
+</script>
+</body>
+</html>

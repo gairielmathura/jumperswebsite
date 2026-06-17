@@ -1,0 +1,1168 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bestuur & commissies - HBV The Jumpers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #1E4272;
+  --navy-dark: #0B1B3D;
+  --orange: #E2702E;
+  --orange-light: #F08A45;
+  --white: #FFFFFF;
+  --light: #F5F7FA;
+  --ink: #1F242E;
+  --soft: #596172;
+  --line: #E3E8F0;
+  --line-dark: rgba(255,255,255,0.16);
+  --shadow: 0 22px 70px rgba(11, 27, 61, 0.14);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  margin: 0;
+  font-family: "Mulish", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--light);
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(11, 27, 61, 0.94);
+  border-bottom: 1px solid var(--line-dark);
+  backdrop-filter: blur(14px);
+}
+.nav-inner {
+  width: min(1320px, calc(100% - 44px));
+  min-height: 82px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+}
+.brand img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+.brand-name {
+  max-width: 12.5em;
+  color: var(--white);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: clamp(0.9rem, 1.12vw, 1.08rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.brand-name small {
+  display: block;
+  margin-top: 5px;
+  color: var(--orange);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 22px);
+}
+.nav-item { position: relative; }
+.nav-link,
+.lang button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: rgba(255,255,255,0.78);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.24s, color 0.24s;
+}
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-item:hover .nav-link,
+.nav-link.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.08);
+}
+.nav-link.nav-sponsor {
+  background: rgba(226,112,46,0.78);
+  border: 1px solid rgba(240,138,69,0.46);
+  color: var(--navy-dark);
+  box-shadow: 0 10px 26px rgba(226,112,46,0.16);
+}
+.nav-link.nav-sponsor:hover,
+.nav-link.nav-sponsor:focus-visible {
+  background: rgba(240,138,69,0.9);
+  color: var(--navy-dark);
+}
+.chev {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+.dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  width: 270px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  background: rgba(11, 27, 61, 0.98);
+  box-shadow: 0 24px 70px rgba(4, 9, 18, 0.34);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.24s var(--ease), transform 0.24s var(--ease), visibility 0.24s;
+}
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown a {
+  display: block;
+  padding: 12px;
+  border-radius: 6px;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.93rem;
+  font-weight: 700;
+}
+.dropdown a:hover,
+.dropdown a:focus-visible,
+.dropdown a.active {
+  background: rgba(226,112,46,0.16);
+  color: var(--white);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lang-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lang-hint {
+  max-width: 145px;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.74rem;
+  line-height: 1.25;
+}
+.lang {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 7px;
+}
+.lang button {
+  min-height: 38px;
+  padding: 9px 11px;
+  border-radius: 0;
+  color: rgba(255,255,255,0.58);
+}
+.lang button.active {
+  color: var(--navy-dark);
+  background: var(--orange);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  text-transform: uppercase;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: var(--orange-light);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  background: currentColor;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 16px 28px;
+  border: 2px solid var(--orange);
+  border-radius: 8px;
+  background: var(--orange);
+  color: var(--navy-dark);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 32px rgba(226,112,46,0.22);
+  transition: transform 0.34s var(--ease), background 0.34s var(--ease), border-color 0.34s var(--ease), color 0.34s var(--ease), box-shadow 0.34s var(--ease);
+}
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-4px);
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  box-shadow: 0 18px 44px rgba(11,27,61,0.24);
+}
+.btn.secondary {
+  background: transparent;
+  border-color: rgba(255,255,255,0.72);
+  color: var(--white);
+  box-shadow: none;
+}
+.btn.secondary:hover,
+.btn.secondary:focus-visible {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--navy-dark);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+  background:
+    linear-gradient(90deg, rgba(4,9,18,0.96) 0%, rgba(11,27,61,0.88) 52%, rgba(11,27,61,0.42) 100%),
+    linear-gradient(180deg, rgba(4,9,18,0.74), rgba(226,112,46,0.16)),
+    url("assets/court-intro.png") center center / cover no-repeat,
+    var(--navy);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 56%, rgba(226,112,46,0.22), transparent 32%),
+    linear-gradient(180deg, rgba(4,9,18,0.1), rgba(4,9,18,0.72));
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1320px, calc(100% - 44px));
+  min-height: clamp(560px, 78vh, 780px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.72fr);
+  gap: clamp(36px, 5vw, 82px);
+  align-items: center;
+  padding: clamp(86px, 11vw, 142px) 0;
+}
+.hero-copy {
+  max-width: 880px;
+  animation: pageIn 3.15s var(--ease) both;
+}
+.hero h1 {
+  font-size: clamp(3.8rem, 7.9vw, 8.4rem);
+  line-height: 0.9;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+.hero h1 span {
+  display: block;
+  color: var(--orange);
+}
+.hero h1 em,
+.section-head h2 em {
+  display: block;
+  font-style: normal;
+}
+.hero p {
+  max-width: 56em;
+  margin: 28px 0 0;
+  color: rgba(255,255,255,0.88);
+  font-size: clamp(1.05rem, 1.28vw, 1.24rem);
+  line-height: 1.72;
+  font-weight: 600;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+.hero-panel {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  animation: panelIn 3.15s 0.18s var(--ease) both;
+}
+.hero-stat {
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 56px rgba(4,9,18,0.22);
+  transition: transform 0.38s var(--ease), background 0.38s var(--ease);
+}
+.hero-stat:hover {
+  transform: translateX(-8px);
+  background: rgba(255,255,255,0.13);
+}
+.hero-stat strong {
+  display: block;
+  color: var(--orange-light);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 2.3rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.hero-stat span {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.55;
+}
+
+.section {
+  padding: clamp(72px, 8vw, 118px) 0;
+}
+.section.dark {
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(11,27,61,0.98), rgba(30,66,114,0.98)),
+    radial-gradient(circle at 78% 28%, rgba(226,112,46,0.26), transparent 34%);
+  color: var(--white);
+}
+.wrap {
+  width: min(1320px, calc(100% - 44px));
+  margin: 0 auto;
+}
+.section-head {
+  max-width: 850px;
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+.section-head.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.section-head.center .eyebrow {
+  justify-content: center;
+}
+.section-head.center .eyebrow::before {
+  display: none;
+}
+.section-head h2 {
+  color: var(--navy);
+  font-size: clamp(2.8rem, 5.6vw, 5.8rem);
+  line-height: 0.92;
+}
+.dark .section-head h2 {
+  color: var(--white);
+}
+.section-head h2 span {
+  display: block;
+  color: var(--orange);
+}
+.section-head p {
+  margin: 18px 0 0;
+  color: var(--soft);
+  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
+  line-height: 1.72;
+}
+.dark .section-head p {
+  color: rgba(255,255,255,0.78);
+}
+#bestuur .section-head {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#bestuur .section-head .eyebrow {
+  justify-content: center;
+}
+#bestuur .section-head .eyebrow::before {
+  display: none;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.person-card {
+  position: relative;
+  grid-column: span 2;
+  min-height: 510px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 14px 42px rgba(11,27,61,0.09);
+  transition: transform 0.42s var(--ease), box-shadow 0.42s var(--ease), border-color 0.42s var(--ease);
+}
+.person-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(226,112,46,0.34);
+  box-shadow: 0 28px 70px rgba(11,27,61,0.17);
+}
+.person-card:nth-child(1) { grid-column: 4 / span 2; grid-row: 1; }
+.person-card:nth-child(2) { grid-column: 6 / span 2; grid-row: 1; }
+.person-card:nth-child(3) { grid-column: 2 / span 2; grid-row: 1; }
+.person-card:nth-child(4) { grid-column: 1 / span 2; grid-row: 2; }
+.person-card:nth-child(5) { grid-column: 3 / span 2; grid-row: 2; }
+.person-card:nth-child(6) { grid-column: 5 / span 2; grid-row: 2; }
+.person-card:nth-child(7) { grid-column: 7 / span 2; grid-row: 2; }
+.person-photo {
+  position: relative;
+  min-height: 255px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(30,66,114,0.92), rgba(226,112,46,0.72)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.16) 0 2px, transparent 2px 18px);
+}
+.person-photo::before {
+  content: "";
+  position: absolute;
+  inset: -20% 12% auto;
+  height: 80%;
+  border: 2px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+.person-photo::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -22%;
+  height: 54%;
+  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.24), transparent 56%);
+}
+.initials {
+  position: relative;
+  z-index: 2;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border: 4px solid rgba(255,255,255,0.86);
+  border-radius: 999px;
+  background: rgba(11,27,61,0.74);
+  color: #fff;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 2.7rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+.photo-note {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 3;
+  padding: 8px 11px;
+  border-radius: 6px;
+  background: rgba(11,27,61,0.78);
+  color: rgba(255,255,255,0.92);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.person-body {
+  flex: 1;
+  padding: 26px;
+}
+.role {
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(226,112,46,0.12);
+  color: var(--orange);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.person-body h3 {
+  color: var(--navy);
+  font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+  line-height: 0.95;
+}
+.person-body p {
+  margin: 14px 0 0;
+  color: var(--soft);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.committee-shell {
+  position: relative;
+}
+.committee-shell::before {
+  content: "";
+  position: absolute;
+  left: clamp(16px, 3vw, 36px);
+  top: 52px;
+  bottom: 52px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--orange), rgba(240,138,69,0.1));
+}
+.committee-list {
+  display: grid;
+  gap: 22px;
+}
+.committee-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: clamp(24px, 4vw, 54px);
+  align-items: stretch;
+  margin-left: clamp(34px, 6vw, 78px);
+  padding: clamp(26px, 3.5vw, 42px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 20px 60px rgba(4,9,18,0.22);
+  backdrop-filter: blur(10px);
+  transition: transform 0.42s var(--ease), background 0.42s var(--ease);
+}
+.committee-card::before {
+  content: "";
+  position: absolute;
+  left: calc(clamp(34px, 6vw, 78px) * -1 - 11px);
+  top: 42px;
+  width: 22px;
+  height: 22px;
+  border: 4px solid var(--white);
+  border-radius: 999px;
+  background: var(--orange);
+  box-shadow: 0 0 0 8px rgba(226,112,46,0.16);
+}
+.committee-card:hover {
+  transform: translateX(10px);
+  background: rgba(255,255,255,0.12);
+}
+.committee-meta h3 {
+  color: var(--white);
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.95;
+}
+.committee-meta p {
+  margin: 16px 0 0;
+  color: rgba(255,255,255,0.76);
+  line-height: 1.68;
+}
+.committee-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.tag {
+  display: inline-flex;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.86);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.members {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+.member-row {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+}
+.member-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--navy-dark);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 900;
+}
+.member-row strong {
+  display: block;
+  color: #fff;
+  font-size: 0.96rem;
+}
+.member-row span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(255,255,255,0.62);
+  font-size: 0.84rem;
+}
+
+.vacancy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.vacancy-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 12px 38px rgba(11,27,61,0.08);
+  transition: transform 0.42s var(--ease), box-shadow 0.42s var(--ease), border-color 0.42s var(--ease);
+}
+.vacancy-card::after {
+  content: "";
+  position: absolute;
+  right: -58px;
+  bottom: -58px;
+  width: 130px;
+  height: 130px;
+  border: 3px solid rgba(226,112,46,0.15);
+  border-radius: 999px;
+}
+.vacancy-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(226,112,46,0.34);
+  box-shadow: 0 22px 60px rgba(11,27,61,0.15);
+}
+.vacancy-card h3 {
+  color: var(--navy);
+  font-size: 2rem;
+  line-height: 1;
+}
+.vacancy-card p {
+  margin: 14px 0 22px;
+  color: var(--soft);
+  line-height: 1.62;
+}
+.vacancy-card .btn {
+  min-height: 48px;
+  padding: 12px 18px;
+  font-size: 0.82rem;
+}
+
+.closing {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(30,66,114,0.96), rgba(11,27,61,0.96)),
+    radial-gradient(circle at 88% 22%, rgba(226,112,46,0.28), transparent 34%);
+  color: var(--white);
+}
+.closing-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  padding: clamp(30px, 4vw, 52px) 0;
+}
+.closing h2 {
+  font-size: clamp(2.5rem, 5.2vw, 5.4rem);
+  line-height: 0.92;
+}
+.closing p {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.72;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(82px);
+  transition: opacity 2.6s var(--ease), transform 2.6s var(--ease), filter 2.6s var(--ease);
+  filter: blur(3px);
+}
+.reveal-left { transform: translateX(-112px); }
+.reveal-right { transform: translateX(112px); }
+.reveal.in,
+.reveal-left.in,
+.reveal-right.in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translate3d(-72px, 34px, 0); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translate3d(68px, 36px, 0); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-copy,
+  .hero-panel,
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    filter: none;
+  }
+}
+
+@media (max-width: 1120px) {
+  .nav-links { display: none; }
+  .lang-hint { display: none; }
+  .hero-inner,
+  .committee-card,
+  .closing-panel {
+    grid-template-columns: 1fr;
+  }
+  .hero-panel { max-width: 620px; }
+  .board-grid,
+  .vacancy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .person-card,
+  .person-card:nth-child(n) { grid-column: auto; grid-row: auto; }
+}
+
+@media (max-width: 760px) {
+  .nav-inner {
+    width: min(100% - 28px, 1240px);
+    min-height: 74px;
+  }
+  .brand img { width: 46px; height: 46px; }
+  .brand-name {
+    max-width: 11.5em;
+    font-size: 0.78rem;
+  }
+  .hero { background-position: 58% center; }
+  .hero-inner {
+    width: min(100% - 30px, 1240px);
+    min-height: auto;
+    padding: 70px 0 54px;
+  }
+  .hero h1 { font-size: clamp(3.1rem, 15vw, 5rem); }
+  .hero p { font-size: 1rem; line-height: 1.62; }
+  .wrap { width: min(100% - 30px, 1240px); }
+  .section { padding: 58px 0; }
+  .section-head h2 { font-size: clamp(2.5rem, 12vw, 4.2rem); }
+  .board-grid,
+  .vacancy-grid { grid-template-columns: 1fr; }
+  .person-card,
+  .person-card:nth-child(n) { grid-column: auto; grid-row: auto; }
+  .person-card { min-height: 0; }
+  .person-photo { min-height: 225px; }
+  .committee-shell::before { left: 10px; }
+  .committee-card {
+    margin-left: 24px;
+    padding: 24px;
+  }
+  .committee-card::before {
+    left: -35px;
+    top: 34px;
+  }
+  .hero-actions .btn,
+  .closing .btn,
+  .vacancy-card .btn {
+    width: 100%;
+  }
+}
+</style>
+<link rel="stylesheet" href="css/layout-consistency.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="homepage-voorbeeld.html">
+      <img src="assets/logo.png" alt="HBV The Jumpers logo" />
+      <span class="brand-name">HBV The Jumpers<small>Den Haag</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hoofdnavigatie">
+      <div class="nav-item">
+        <a class="nav-link" href="homepage-voorbeeld.html" data-nl="Home" data-en="Home">Home</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link active" href="onze-vereniging.html" data-nl="Over HBV The Jumpers" data-en="About HBV The Jumpers">Over HBV The Jumpers <span class="chev"></span></a>
+        <div class="dropdown">
+          <a href="onze-vereniging.html" data-nl="Onze vereniging" data-en="Our club">Onze vereniging</a>
+          <a href="geschiedenis.html" data-nl="Geschiedenis" data-en="History">Geschiedenis</a>
+          <a class="active" href="bestuur-commissies.html" data-nl="Bestuur & commissies" data-en="Board & committees">Bestuur & commissies</a>
+          <a href="documenten.html" data-nl="Documenten" data-en="Documents">Documenten</a>
+          <a href="#" data-nl="Veilig sportklimaat" data-en="Safe sports climate">Veilig sportklimaat</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#" data-nl="Lid worden" data-en="Join us">Lid worden <span class="chev"></span></a>
+        <div class="dropdown">
+          <a href="#" data-nl="Proeftraining aanvragen" data-en="Request a trial practice">Proeftraining aanvragen</a>
+          <a href="#" data-nl="Contributie" data-en="Fees">Contributie</a>
+          <a href="#" data-nl="Veelgestelde vragen" data-en="FAQ">Veelgestelde vragen</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link nav-sponsor" href="sponsoring.html" data-nl="Sponsor worden" data-en="Become a sponsor">Sponsor worden</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="contact.html" data-nl="Contact" data-en="Contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-wrap">
+        <span class="lang-hint" data-lang-hint>English? Use the button here.</span>
+        <div class="lang" role="group" aria-label="Taal kiezen">
+          <button type="button" class="active" data-set-lang="nl">NL</button>
+          <button type="button" data-set-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow" data-nl="Achter de vereniging" data-en="Behind the club">Achter de vereniging</span>
+        <h1><span data-nl="Bestuur" data-en="Board">Bestuur</span><em data-nl="& commissies" data-en="& committees">& commissies</em></h1>
+        <p data-nl="HBV The Jumpers draait op mensen die verantwoordelijkheid nemen. Bestuurders, commissieleden, trainers, ouders en andere vrijwilligers zorgen samen dat spelers kunnen trainen, wedstrijden spelen en zich thuis voelen bij de club." data-en="HBV The Jumpers is powered by people who take responsibility. Board members, committee members, coaches, parents and other volunteers make sure players can practice, play games and feel at home at the club.">HBV The Jumpers draait op mensen die verantwoordelijkheid nemen. Bestuurders, commissieleden, trainers, ouders en andere vrijwilligers zorgen samen dat spelers kunnen trainen, wedstrijden spelen en zich thuis voelen bij de club.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#vacatures" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+          <a class="btn secondary" href="#bestuur" data-nl="Bekijk het bestuur" data-en="Meet the board">Bekijk het bestuur</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="Kerninformatie">
+        <div class="hero-stat">
+          <strong data-nl="Van vrijwilligers" data-en="By volunteers">Van vrijwilligers</strong>
+          <span data-nl="De vereniging wordt gedragen door mensen die iets willen betekenen voor basketbal in Den Haag." data-en="The club is carried by people who want to contribute to basketball in The Hague.">De vereniging wordt gedragen door mensen die iets willen betekenen voor basketbal in Den Haag.</span>
+        </div>
+        <div class="hero-stat">
+          <strong data-nl="Voor de spelers" data-en="For the players">Voor de spelers</strong>
+          <span data-nl="Elke taak, groot of klein, helpt kinderen en volwassenen om met plezier te blijven basketballen." data-en="Every task, big or small, helps children and adults keep enjoying basketball.">Elke taak, groot of klein, helpt kinderen en volwassenen om met plezier te blijven basketballen.</span>
+        </div>
+        <div class="hero-stat">
+          <strong data-nl="Samen sterk" data-en="Stronger together">Samen sterk</strong>
+          <span data-nl="Commissies maken het werk overzichtelijk en zorgen dat iedereen kan bijdragen vanuit eigen talent." data-en="Committees make the work clear and help everyone contribute from their own strengths.">Commissies maken het werk overzichtelijk en zorgen dat iedereen kan bijdragen vanuit eigen talent.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="bestuur">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-nl="Het bestuur" data-en="The board">Het bestuur</span>
+        <h2 data-nl="De mensen die richting geven" data-en="The people setting direction">De mensen die richting geven</h2>
+        <p data-nl="Het bestuur heeft de algemene leiding van de vereniging. De leden worden gekozen door de Algemene Ledenvergadering en zorgen samen voor koers, continuÃ¯teit en een gezonde basis voor de club." data-en="The board is responsible for the overall leadership of the club. Its members are elected by the general meeting and together provide direction, continuity and a healthy foundation for the club.">Het bestuur heeft de algemene leiding van de vereniging. De leden worden gekozen door de Algemene Ledenvergadering en zorgen samen voor koers, continuÃ¯teit en een gezonde basis voor de club.</p>
+      </div>
+
+      <div class="board-grid">
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">GM</span><span class="photo-note" data-nl="Foto volgt" data-en="Photo coming soon">Foto volgt</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Voorzitter" data-en="Chair">Voorzitter</span>
+            <h3>Gairiel Mathura</h3>
+            <p data-nl="Gairiel bewaakt de koers van HBV The Jumpers, leidt het bestuur en vertegenwoordigt de vereniging naar buiten. Zijn focus ligt op verbinding, groei en een sterke basis voor de toekomst." data-en="Gairiel safeguards the direction of HBV The Jumpers, leads the board and represents the club externally. His focus is connection, growth and a strong foundation for the future.">Gairiel bewaakt de koers van HBV The Jumpers, leidt het bestuur en vertegenwoordigt de vereniging naar buiten. Zijn focus ligt op verbinding, groei en een sterke basis voor de toekomst.</p>
+          </div>
+        </article>
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">JP</span><span class="photo-note" data-nl="Foto volgt" data-en="Photo coming soon">Foto volgt</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Secretaris" data-en="Secretary">Secretaris</span>
+            <h3>Jerney Postema</h3>
+            <p data-nl="Jerney zorgt voor structuur in correspondentie, vergaderingen, besluiten en archief. Daarmee houdt zij de bestuurlijke afspraken overzichtelijk en zorgvuldig vastgelegd." data-en="Jerney brings structure to correspondence, meetings, decisions and records. She helps keep board agreements clear and carefully documented.">Jerney zorgt voor structuur in correspondentie, vergaderingen, besluiten en archief. Daarmee houdt zij de bestuurlijke afspraken overzichtelijk en zorgvuldig vastgelegd.</p>
+          </div>
+        </article>
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">NM</span><span class="photo-note" data-nl="Foto volgt" data-en="Photo coming soon">Foto volgt</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Penningmeester" data-en="Treasurer">Penningmeester</span>
+            <h3>Nabila Mokiem</h3>
+            <p data-nl="Nabila bewaakt de financiÃ«n van de vereniging. Zij houdt zicht op begroting, contributies en verantwoording, zodat de club verantwoord kan blijven groeien." data-en="Nabila oversees the club's finances. She keeps track of budgeting, fees and accountability, helping the club grow responsibly.">Nabila bewaakt de financiÃ«n van de vereniging. Zij houdt zicht op begroting, contributies en verantwoording, zodat de club verantwoord kan blijven groeien.</p>
+          </div>
+        </article>
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">LD</span><span class="photo-note" data-nl="Foto volgt" data-en="Photo coming soon">Foto volgt</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Wedstrijdsecretaris" data-en="Game secretary">Wedstrijdsecretaris</span>
+            <h3>Lana van Driel</h3>
+            <p data-nl="Lana helpt de wedstrijdorganisatie overzichtelijk te houden. Zij ondersteunt bij planning, communicatie rond wedstrijden en afstemming met teams, zodat het seizoen soepel kan verlopen." data-en="Lana helps keep game organization clear. She supports scheduling, game communication and coordination with teams, helping the season run smoothly.">Lana helpt de wedstrijdorganisatie overzichtelijk te houden. Zij ondersteunt bij planning, communicatie rond wedstrijden en afstemming met teams, zodat het seizoen soepel kan verlopen.</p>
+          </div>
+        </article>
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">NW</span><span class="photo-note" data-nl="Foto volgt" data-en="Photo coming soon">Foto volgt</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Commissaris" data-en="Board member">Commissaris</span>
+            <h3>Nella Winklaar</h3>
+            <p data-nl="Nella is als commissaris verbonden aan het bestuur en voorzitter van de kantinecommissie. Zij helpt de Jump Inn verder groeien als warme ontmoetingsplek binnen de club." data-en="Nella serves as a board member and chairs the clubhouse committee. She helps the Jump Inn grow as a warm meeting place within the club.">Nella is als commissaris verbonden aan het bestuur en voorzitter van de kantinecommissie. Zij helpt de Jump Inn verder groeien als warme ontmoetingsplek binnen de club.</p>
+          </div>
+        </article>
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">?</span><span class="photo-note" data-nl="Vacature" data-en="Vacancy">Vacature</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Commissaris" data-en="Board member">Commissaris</span>
+            <h3 data-nl="Vacature" data-en="Vacancy">Vacature</h3>
+            <p data-nl="HBV The Jumpers kan een tweede commissaris in het bestuur gebruiken. Een mooie plek voor iemand die wil meedenken, verbinden en een deelgebied binnen de vereniging wil helpen versterken." data-en="HBV The Jumpers can use a second board member. A great role for someone who wants to think along, connect people and help strengthen an area of the club.">HBV The Jumpers kan een tweede commissaris in het bestuur gebruiken. Een mooie plek voor iemand die wil meedenken, verbinden en een deelgebied binnen de vereniging wil helpen versterken.</p>
+          </div>
+        </article>
+        <article class="person-card reveal">
+          <div class="person-photo"><span class="initials">?</span><span class="photo-note" data-nl="Vacature" data-en="Vacancy">Vacature</span></div>
+          <div class="person-body">
+            <span class="role" data-nl="Vice-voorzitter" data-en="Vice-chair">Vice-voorzitter</span>
+            <h3 data-nl="Vacature" data-en="Vacancy">Vacature</h3>
+            <p data-nl="De vice-voorzitter ondersteunt de voorzitter en het bestuur bij beleid, keuzes en uitvoering. Bij afwezigheid van de voorzitter neemt deze persoon de rol tijdelijk over." data-en="The vice-chair supports the chair and board with policy, choices and execution. In the chair's absence, this person temporarily steps into the role.">De vice-voorzitter ondersteunt de voorzitter en het bestuur bij beleid, keuzes en uitvoering. Bij afwezigheid van de voorzitter neemt deze persoon de rol tijdelijk over.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="commissies">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-nl="Commissies" data-en="Committees">Commissies</span>
+        <h2><span data-nl="Samen" data-en="Together">Samen</span><em data-nl="organiseren we de club" data-en="we organize the club">organiseren we de club</em></h2>
+        <p data-nl="Commissies voeren praktische en organisatorische taken uit. Sommige commissies zijn goed bezet, andere zoeken nieuwe mensen. Zo maken we het werk behapbaar en blijft de vereniging van vrijwilligers voor vrijwilligers." data-en="Committees carry practical and organizational responsibilities. Some are well staffed, others are looking for new people. This keeps the work manageable and keeps the club run by volunteers, for volunteers.">Commissies voeren praktische en organisatorische taken uit. Sommige commissies zijn goed bezet, andere zoeken nieuwe mensen. Zo maken we het werk behapbaar en blijft de vereniging van vrijwilligers voor vrijwilligers.</p>
+      </div>
+
+      <div class="committee-shell">
+        <div class="committee-list">
+          <article class="committee-card reveal reveal-right">
+            <div class="committee-meta">
+              <h3 data-nl="Technische commissie" data-en="Technical committee">Technische commissie</h3>
+              <p data-nl="Deze commissie denkt mee over teams, trainers, coaching en sportieve ontwikkeling. Zij vormt een belangrijke schakel tussen bestuur, trainers en spelers." data-en="This committee works on teams, trainers, coaching and sporting development. It is an important link between the board, coaches and players.">Deze commissie denkt mee over teams, trainers, coaching en sportieve ontwikkeling. Zij vormt een belangrijke schakel tussen bestuur, trainers en spelers.</p>
+              <div class="committee-tags"><span class="tag" data-nl="Sportief beleid" data-en="Sport policy">Sportief beleid</span><span class="tag" data-nl="Teams" data-en="Teams">Teams</span><span class="tag" data-nl="Trainers" data-en="Coaches">Trainers</span></div>
+            </div>
+            <div class="members">
+              <div class="member-row"><span class="member-avatar">LD</span><div><strong>Lana van Driel</strong><span data-nl="Voorzitter technische commissie" data-en="Chair technical committee">Voorzitter technische commissie</span></div></div>
+              <div class="member-row"><span class="member-avatar">SW</span><div><strong>Stepheson Winklaar</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">SE</span><div><strong>Stathis Elaiotriviaris</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">AT</span><div><strong>Arnessen Troenoredjo</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+            </div>
+          </article>
+
+          <article class="committee-card reveal reveal-left">
+            <div class="committee-meta">
+              <h3 data-nl="Ledenadministratie" data-en="Membership administration">Ledenadministratie</h3>
+              <p data-nl="De ledenadministratie houdt inschrijvingen, gegevens en mutaties overzichtelijk. Dit is de stille motor achter een betrouwbare vereniging." data-en="Membership administration keeps registrations, details and changes organized. It is the quiet engine behind a reliable club.">De ledenadministratie houdt inschrijvingen, gegevens en mutaties overzichtelijk. Dit is de stille motor achter een betrouwbare vereniging.</p>
+              <div class="committee-tags"><span class="tag" data-nl="Inschrijvingen" data-en="Registrations">Inschrijvingen</span><span class="tag" data-nl="Ledenbestand" data-en="Member records">Ledenbestand</span></div>
+            </div>
+            <div class="members">
+              <div class="member-row"><span class="member-avatar">LD</span><div><strong>Lana van Driel</strong><span data-nl="Ledenadministratie" data-en="Membership administration">Ledenadministratie</span></div></div>
+              <div class="member-row"><span class="member-avatar">BL</span><div><strong>Bouke Lobe</strong><span data-nl="Ledenadministratie" data-en="Membership administration">Ledenadministratie</span></div></div>
+              <div class="member-row"><span class="member-avatar">MV</span><div><strong>Mariella Victoria</strong><span data-nl="Ledenadministratie" data-en="Membership administration">Ledenadministratie</span></div></div>
+            </div>
+          </article>
+
+          <article class="committee-card reveal reveal-right">
+            <div class="committee-meta">
+              <h3 data-nl="Kantinecommissie" data-en="Clubhouse committee">Kantinecommissie</h3>
+              <p data-nl="De kantinecommissie zorgt dat de Jump Inn een fijne plek blijft voor ontmoeting, gezelligheid en clubcultuur. Hier groeit de vereniging ook naast het veld." data-en="The clubhouse committee keeps the Jump Inn a welcoming place for connection, atmosphere and club culture. This is where the club grows off the court too.">De kantinecommissie zorgt dat de Jump Inn een fijne plek blijft voor ontmoeting, gezelligheid en clubcultuur. Hier groeit de vereniging ook naast het veld.</p>
+              <div class="committee-tags"><span class="tag">Jump Inn</span><span class="tag" data-nl="Gezelligheid" data-en="Atmosphere">Gezelligheid</span><span class="tag" data-nl="Vrijwilligers" data-en="Volunteers">Vrijwilligers</span></div>
+            </div>
+            <div class="members">
+              <div class="member-row"><span class="member-avatar">NW</span><div><strong>Nella Winklaar</strong><span data-nl="Voorzitter kantinecommissie" data-en="Chair clubhouse committee">Voorzitter kantinecommissie</span></div></div>
+              <div class="member-row"><span class="member-avatar">NV</span><div><strong>Niels Vlooswijk</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">+</span><div><strong data-nl="Extra hulp welkom" data-en="Extra help welcome">Extra hulp welkom</strong><span data-nl="Kantinediensten en organisatie" data-en="Clubhouse shifts and organization">Kantinediensten en organisatie</span></div></div>
+            </div>
+          </article>
+
+          <article class="committee-card reveal reveal-left">
+            <div class="committee-meta">
+              <h3 data-nl="Redactiecommissie" data-en="Editorial committee">Redactiecommissie</h3>
+              <p data-nl="De redactiecommissie helpt verhalen, nieuws en zichtbaarheid van de vereniging vorm te geven. Denk aan website, socials, foto's en communicatie." data-en="The editorial committee helps shape the club's stories, news and visibility. Think website, socials, photos and communication.">De redactiecommissie helpt verhalen, nieuws en zichtbaarheid van de vereniging vorm te geven. Denk aan website, socials, foto's en communicatie.</p>
+              <div class="committee-tags"><span class="tag" data-nl="Website" data-en="Website">Website</span><span class="tag" data-nl="Socials" data-en="Socials">Socials</span><span class="tag" data-nl="Content" data-en="Content">Content</span></div>
+            </div>
+            <div class="members">
+              <div class="member-row"><span class="member-avatar">LD</span><div><strong>Lana van Driel</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">GM</span><div><strong>Gairiel Mathura</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">+</span><div><strong data-nl="Vacature" data-en="Vacancy">Vacature</strong><span data-nl="Redactie / communicatie" data-en="Editorial / communication">Redactie / communicatie</span></div></div>
+              <div class="member-row"><span class="member-avatar">+</span><div><strong data-nl="Vacature" data-en="Vacancy">Vacature</strong><span data-nl="Contentmaker / socials" data-en="Content creator / socials">Contentmaker / socials</span></div></div>
+            </div>
+          </article>
+
+          <article class="committee-card reveal reveal-right">
+            <div class="committee-meta">
+              <h3 data-nl="Commissie van beroep" data-en="Appeals committee">Commissie van beroep</h3>
+              <p data-nl="Deze commissie behandelt beroepszaken onafhankelijk en zorgvuldig. Daarmee draagt zij bij aan een duidelijke en eerlijke verenigingscultuur." data-en="This committee handles appeals independently and carefully, contributing to a clear and fair club culture.">Deze commissie behandelt beroepszaken onafhankelijk en zorgvuldig. Daarmee draagt zij bij aan een duidelijke en eerlijke verenigingscultuur.</p>
+              <div class="committee-tags"><span class="tag" data-nl="Onafhankelijk" data-en="Independent">Onafhankelijk</span><span class="tag" data-nl="Zorgvuldig" data-en="Careful">Zorgvuldig</span></div>
+            </div>
+            <div class="members">
+              <div class="member-row"><span class="member-avatar">SK</span><div><strong>Sjoerd Klompmaker</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">KB</span><div><strong>Koen Baart</strong><span data-nl="Commissielid" data-en="Committee member">Commissielid</span></div></div>
+              <div class="member-row"><span class="member-avatar">+</span><div><strong data-nl="Vacature" data-en="Vacancy">Vacature</strong><span data-nl="Derde commissielid gezocht" data-en="Third committee member wanted">Derde commissielid gezocht</span></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="vacatures">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow" data-nl="Vacatures" data-en="Vacancies">Vacatures</span>
+        <h2><span data-nl="Help mee bouwen" data-en="Help build">Help mee bouwen</span><em data-nl="aan HBV The Jumpers" data-en="HBV The Jumpers">aan HBV The Jumpers</em></h2>
+        <p data-nl="Niet elke taak vraagt evenveel tijd. Soms is een paar uur per maand al genoeg om een groot verschil te maken voor spelers, ouders en vrijwilligers." data-en="Not every role takes a lot of time. Sometimes a few hours a month are enough to make a big difference for players, parents and volunteers.">Niet elke taak vraagt evenveel tijd. Soms is een paar uur per maand al genoeg om een groot verschil te maken voor spelers, ouders en vrijwilligers.</p>
+      </div>
+
+      <div class="vacancy-grid">
+        <article class="vacancy-card reveal">
+          <span class="role" data-nl="Bestuur" data-en="Board">Bestuur</span>
+          <h3 data-nl="Commissaris" data-en="Board member">Commissaris</h3>
+          <p data-nl="Wil jij meedenken over de vereniging en een deelgebied helpen versterken? Dan is de tweede commissarisplek een mooie manier om bestuurlijk bij te dragen." data-en="Would you like to help shape the club and strengthen a specific area? The second board member role is a great way to contribute at board level.">Wil jij meedenken over de vereniging en een deelgebied helpen versterken? Dan is de tweede commissarisplek een mooie manier om bestuurlijk bij te dragen.</p>
+          <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+        </article>
+        <article class="vacancy-card reveal">
+          <span class="role" data-nl="Jeugd & senioren" data-en="Youth & seniors">Jeugd & senioren</span>
+          <h3 data-nl="Commissieleden" data-en="Committee members">Commissieleden</h3>
+          <p data-nl="Help mee met de dagelijkse gang van zaken voor jeugd- of seniorenteams, van praktische afstemming tot het versterken van de teamcultuur." data-en="Help with the day-to-day organization for youth or senior teams, from practical coordination to strengthening team culture.">Help mee met de dagelijkse gang van zaken voor jeugd- of seniorenteams, van praktische afstemming tot het versterken van de teamcultuur.</p>
+          <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+        </article>
+        <article class="vacancy-card reveal">
+          <span class="role" data-nl="Materiaal" data-en="Equipment">Materiaal</span>
+          <h3 data-nl="Materiaalcommissie" data-en="Equipment committee">Materiaalcommissie</h3>
+          <p data-nl="Zorg dat ballen, tenues en trainingsmateriaal op orde zijn. Praktisch werk dat direct merkbaar is op het veld." data-en="Help keep balls, uniforms and training equipment in order. Practical work that is immediately felt on the court.">Zorg dat ballen, tenues en trainingsmateriaal op orde zijn. Praktisch werk dat direct merkbaar is op het veld.</p>
+          <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+        </article>
+        <article class="vacancy-card reveal">
+          <span class="role" data-nl="Kantine" data-en="Clubhouse">Kantine</span>
+          <h3 data-nl="Jump Inn helpers" data-en="Jump Inn helpers">Jump Inn helpers</h3>
+          <p data-nl="Help de Jump Inn gezellig, open en georganiseerd te houden tijdens trainingen, wedstrijden en activiteiten." data-en="Help keep the Jump Inn welcoming, open and organized during practices, games and activities.">Help de Jump Inn gezellig, open en georganiseerd te houden tijdens trainingen, wedstrijden en activiteiten.</p>
+          <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+        </article>
+        <article class="vacancy-card reveal">
+          <span class="role" data-nl="Communicatie" data-en="Communication">Communicatie</span>
+          <h3 data-nl="Content & socials" data-en="Content & socials">Content & socials</h3>
+          <p data-nl="Maak foto's, verhalen of berichten waarmee we de energie van HBV The Jumpers zichtbaar maken voor de stad." data-en="Create photos, stories or posts that show the energy of HBV The Jumpers to the city.">Maak foto's, verhalen of berichten waarmee we de energie van HBV The Jumpers zichtbaar maken voor de stad.</p>
+          <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+        </article>
+        <article class="vacancy-card reveal">
+          <span class="role" data-nl="Formeel" data-en="Formal roles">Formeel</span>
+          <h3 data-nl="Kas, notulen & beroep" data-en="Finance, minutes & appeals">Kas, notulen & beroep</h3>
+          <p data-nl="Denk mee in formele commissies zoals kascommissie, notulencommissie, juridische commissie of commissie van beroep." data-en="Contribute to formal committees such as finance review, minutes, legal or appeals committees.">Denk mee in formele commissies zoals kascommissie, notulencommissie, juridische commissie of commissie van beroep.</p>
+          <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap closing-panel reveal">
+      <div>
+        <span class="eyebrow" data-nl="Van vrijwilligers voor vrijwilligers" data-en="By volunteers, for volunteers">Van vrijwilligers voor vrijwilligers</span>
+        <h2 data-nl="Ook jouw bijdrage telt" data-en="Your contribution matters too">Ook jouw bijdrage telt</h2>
+        <p data-nl="Of je nu veel tijd hebt of af en toe kunt helpen: samen zorgen we dat kinderen en volwassenen kunnen basketballen bij een warme vereniging in Den Haag." data-en="Whether you have a lot of time or can help now and then: together we make sure children and adults can play basketball at a warm club in The Hague.">Of je nu veel tijd hebt of af en toe kunt helpen: samen zorgen we dat kinderen en volwassenen kunnen basketballen bij een warme vereniging in Den Haag.</p>
+      </div>
+      <a class="btn" href="contact.html" data-nl="Ik wil graag helpen" data-en="I want to help">Ik wil graag helpen</a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var hint = document.querySelector("[data-lang-hint]");
+  var buttons = document.querySelectorAll("[data-set-lang]");
+
+  function setLanguage(lang) {
+    if (lang !== "nl" && lang !== "en") lang = "nl";
+    document.documentElement.lang = lang;
+    try {
+      localStorage.setItem("jumpers-language", lang);
+    } catch (err) {}
+    document.querySelectorAll("[data-nl]").forEach(function (el) {
+      var text = el.getAttribute("data-" + lang);
+      if (text) el.innerHTML = text;
+    });
+    buttons.forEach(function (button) {
+      button.classList.toggle("active", button.getAttribute("data-set-lang") === lang);
+    });
+    if (hint) {
+      hint.textContent = lang === "nl"
+        ? "English? Use the button here."
+        : "Nederlands? Gebruik de knop hier.";
+    }
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setLanguage(button.getAttribute("data-set-lang"));
+    });
+  });
+
+  var savedLang = "nl";
+  try {
+    savedLang = localStorage.getItem("jumpers-language") || "nl";
+  } catch (err) {}
+  setLanguage(savedLang);
+
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && reveals.length) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -30px 0px"
+    });
+
+    reveals.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    reveals.forEach(function (el) {
+      el.classList.add("in");
+    });
+  }
+})();
+</script>
+</body>
+</html>
+
