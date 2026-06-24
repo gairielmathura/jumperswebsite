@@ -271,27 +271,39 @@ h1 {
 }
 .doc-content {
   width: 100%;
+  min-height: 176px;
+  display: grid;
+  grid-template-rows: minmax(78px, auto) minmax(54px, auto) auto;
+  align-items: center;
+  justify-items: center;
   text-align: center;
 }
 .doc-card h2 {
   color: var(--white);
-  width: min(100%, 9.5em);
+  width: min(100%, 10.8em);
   margin: 0 auto;
   font-size: clamp(2.15rem, 3.35vw, 3.55rem);
   line-height: 0.9;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-wrap: balance;
   text-shadow: 0 5px 20px rgba(0,0,0,0.38);
 }
 .doc-card p {
-  min-height: 48px;
   max-width: 28ch;
-  margin: 16px auto 20px;
+  margin: 8px auto 18px;
   color: rgba(255,255,255,0.82);
   line-height: 1.5;
+  text-wrap: balance;
 }
 .doc-card.compact-title h2 {
-  font-size: clamp(1.95rem, 2.85vw, 3.1rem);
+  font-size: clamp(1.82rem, 2.55vw, 2.9rem);
+}
+.doc-card.single-line-title h2 {
+  width: min(100%, 12em);
+  font-size: clamp(1.78rem, 2.45vw, 2.75rem);
+  white-space: nowrap;
 }
 .doc-button {
   display: inline-flex;
@@ -350,7 +362,16 @@ h1 {
   h1 { font-size: clamp(4rem, 19vw, 6.4rem); }
   .doc-grid { grid-template-columns: 1fr; }
   .doc-card { min-height: 265px; }
-  .doc-card p { min-height: 0; }
+  .doc-content {
+    min-height: 166px;
+    grid-template-rows: minmax(68px, auto) minmax(48px, auto) auto;
+  }
+  .doc-card h2,
+  .doc-card.compact-title h2,
+  .doc-card.single-line-title h2 {
+    white-space: normal;
+    font-size: clamp(2.1rem, 12vw, 3.35rem);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -438,7 +459,7 @@ h1 {
           </div>
         </a>
 
-        <a class="doc-card reveal compact-title" style="--image:url('assets/court-intro.png');--focus:center bottom" href="https://drive.google.com/file/d/1u-cJl2yZfPiC-WTGza8uky_lWBMu6O2T/view?usp=drivesdk" target="_blank" rel="noopener">
+        <a class="doc-card reveal compact-title single-line-title" style="--image:url('assets/court-intro.png');--focus:center bottom" href="https://drive.google.com/file/d/1u-cJl2yZfPiC-WTGza8uky_lWBMu6O2T/view?usp=drivesdk" target="_blank" rel="noopener">
           <div class="doc-content">
             <h2 data-nl="Boetereglement" data-en="Fine regulations">Boetereglement</h2>
             <p data-nl="Overzicht van afspraken rond boetes en wedstrijdzaken." data-en="Overview of agreements around fines and game administration.">Overzicht van afspraken rond boetes en wedstrijdzaken.</p>
