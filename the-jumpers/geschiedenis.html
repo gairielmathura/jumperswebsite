@@ -3567,6 +3567,7 @@ body {
   var timeline = [
     {
       year: "1962",
+      imageSrc: "assets/history/1962-first-gym.jpg",
       imageNl: "De eerste sprong: basketbal begint in een gymzaal in Scheveningen.",
       imageEn: "The first jump: basketball begins in a school gym in Scheveningen.",
       titleNl: "Oprichting in Scheveningen",
@@ -3576,6 +3577,7 @@ body {
     },
     {
       year: "1966",
+      imageSrc: "assets/history/1966-womens-game.jpg",
       imageNl: "De vereniging wordt breder: basketbal komt open te staan voor meisjes en dames.",
       imageEn: "The club broadens: basketball opens up for girls and women.",
       titleNl: "Meisjes en dames sluiten aan",
@@ -3585,6 +3587,7 @@ body {
     },
     {
       year: "1967",
+      imageSrc: "assets/history/1967-court.jpg",
       imageNl: "Meer ruimte, meer groei, maar al snel blijkt een veld niet genoeg.",
       imageEn: "More space, more growth, but one court soon proves too small.",
       titleNl: "Verhuizing naar Lindoduin",
@@ -3594,6 +3597,7 @@ body {
     },
     {
       year: "1971",
+      imageSrc: "assets/history/1971-training.jpg",
       imageNl: "Drie velden geven de vereniging lucht om teams en trainingen te laten groeien.",
       imageEn: "Three courts give the club room for teams and practices to grow.",
       titleNl: "Drie velden in Overbosch",
@@ -3603,6 +3607,7 @@ body {
     },
     {
       year: "1978",
+      imageSrc: "assets/history/1978-new-home.jpg",
       imageNl: "De zoektocht naar een echte thuisbasis krijgt vorm.",
       imageEn: "The search for a true home court starts to take shape.",
       titleNl: "Op weg naar een eigen thuis",
@@ -3612,6 +3617,7 @@ body {
     },
     {
       year: "1982",
+      imageSrc: "assets/court-intro.png",
       imageNl: "Sporthal, velden en kantine komen samen als het hart van de vereniging.",
       imageEn: "Sports hall, courts and clubhouse come together as the heart of the club.",
       titleNl: "Thuis in 't Zandje",
@@ -3621,6 +3627,7 @@ body {
     },
     {
       year: "2017",
+      imageSrc: "assets/history/2017-volunteers.jpg",
       imageNl: "Vrijwilligers bouwen mee aan de waarden die de club vandaag nog dragen.",
       imageEn: "Volunteers help shape the values that still carry the club today.",
       titleNl: "Nieuwe visie met vrijwilligers",
@@ -3630,6 +3637,7 @@ body {
     },
     {
       year: "2018",
+      imageSrc: "assets/history/2018-team.jpg",
       imageNl: "Sportief succes en een vernieuwde Jump Inn versterken het clubgevoel.",
       imageEn: "Sporting success and a refreshed Jump Inn strengthen the club feeling.",
       titleNl: "Sportief en gezellig sterker",
@@ -3639,6 +3647,7 @@ body {
     },
     {
       year: "2020",
+      imageSrc: "assets/history/1962-gym.jpg",
       imageNl: "HBV The Jumpers laat zien dat basketbal ook buiten de eigen teams betekenis heeft.",
       imageEn: "HBV The Jumpers shows that basketball matters beyond its own teams.",
       titleNl: "Samenwerking in de stad",
@@ -3648,6 +3657,7 @@ body {
     },
     {
       year: "2024",
+      imageSrc: "assets/history/2024-open-club.jpg",
       imageNl: "De club opent zich verder naar de stad met nieuwe projecten en samenwerkingen.",
       imageEn: "The club opens further to the city through new projects and partnerships.",
       titleNl: "Open Club en nieuwe projecten",
@@ -3723,7 +3733,7 @@ body {
           '<span class="polaroid-inner">' +
             '<span class="polaroid-face polaroid-front">' +
               '<span class="polaroid-photo-wrap">' +
-                '<img src="assets/court-intro.png" alt="HBV The Jumpers ' + item.year + '">' +
+                '<img src="' + item.imageSrc + '" alt="HBV The Jumpers ' + item.year + '">' +
                 '<span class="polaroid-hover" data-polaroid-tap>' + (currentLang === "nl" ? "Klik voor meer informatie" : "Click for more information") + '</span>' +
               '</span>' +
             '</span>' +

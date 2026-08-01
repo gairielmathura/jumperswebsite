@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/info-pages.css" />
 <link rel="stylesheet" href="css/layout-consistency.css" />
+<link rel="stylesheet" href="https://registration-form.foys.tech/chunk-vendors.css" />
+<link rel="stylesheet" href="https://registration-form.foys.tech/app.css" />
 </head>
 <body>
 <header class="site-nav">
@@ -48,9 +50,23 @@
       <h1 data-nl="Vraag een <span>proeftraining</span> aan" data-en="Request a <span>trial practice</span>">Vraag een <span>proeftraining</span> aan</h1>
       <p data-nl="Basketbal proberen bij HBV The Jumpers kan vanaf 5 jaar. Of je net begint, al langer speelt, recreatief wilt basketballen of ambitie hebt om door te groeien: we kijken samen welke plek bij jou past." data-en="You can try basketball at HBV The Jumpers from age 5. Whether you are new, experienced, recreational or ambitious, we will help you find the right place.">Basketbal proberen bij HBV The Jumpers kan vanaf 5 jaar. Of je net begint, al langer speelt, recreatief wilt basketballen of ambitie hebt om door te groeien: we kijken samen welke plek bij jou past.</p>
       <div class="hero-actions">
-        <a class="btn" href="contact.html" data-nl="Aanmelden via contact" data-en="Apply via contact">Aanmelden via contact</a>
+        <a class="btn" href="#registratie" data-nl="Vraag proeftraining aan" data-en="Request a trial practice">Vraag proeftraining aan</a>
         <a class="btn secondary" href="contributie.html" data-nl="Bekijk contributie" data-en="View fees">Bekijk contributie</a>
       </div>
+    </div>
+  </section>
+
+  <section class="section registration-section" id="registratie">
+    <div class="wrap">
+      <div class="section-title reveal">
+        <span class="eyebrow" data-nl="Aanmelden" data-en="Register">Aanmelden</span>
+        <h2 data-nl="Jouw proeftraining" data-en="Your trial practice">Jouw proeftraining</h2>
+        <p data-nl="Vul het formulier hieronder in. We gebruiken je gegevens alleen om je aanvraag te behandelen en de juiste training voor je te vinden." data-en="Complete the form below. We use your details only to handle your request and find the right practice for you.">Vul het formulier hieronder in. We gebruiken je gegevens alleen om je aanvraag te behandelen en de juiste training voor je te vinden.</p>
+      </div>
+      <div class="registration-shell reveal">
+        <registration-form-entry configuration="8e10c0e8-fb52-403a-60e0-08ddae7a0f7a"></registration-form-entry>
+      </div>
+      <p class="registration-note" data-nl="Het formulier wordt veilig geladen via de registratieomgeving van de bond." data-en="The form is securely loaded through the federation's registration environment.">Het formulier wordt veilig geladen via de registratieomgeving van de bond.</p>
     </div>
   </section>
 
@@ -59,7 +75,7 @@
       <div class="section-title reveal">
         <span class="eyebrow" data-nl="Eerst kennismaken" data-en="First meet us">Eerst kennismaken</span>
         <h2 data-nl="Zo werkt het" data-en="How it works">Zo werkt het</h2>
-        <p data-nl="Deze pagina is alvast ingericht als duidelijke route voor nieuwe spelers en ouders. De definitieve formulieren en contactpersonen kunnen we later koppelen." data-en="This page is prepared as a clear route for new players and parents. We can connect the final forms and contacts later.">Deze pagina is alvast ingericht als duidelijke route voor nieuwe spelers en ouders. De definitieve formulieren en contactpersonen kunnen we later koppelen.</p>
+        <p data-nl="Vul eerst het formulier in. Daarna kijken we naar leeftijd, ervaring en voorkeur, zodat we je goed kunnen begeleiden naar een passende training." data-en="Complete the form first. We then look at age, experience and preference, so we can guide you to a suitable practice.">Vul eerst het formulier in. Daarna kijken we naar leeftijd, ervaring en voorkeur, zodat we je goed kunnen begeleiden naar een passende training.</p>
       </div>
       <div class="grid">
         <article class="card reveal">
@@ -108,7 +124,7 @@
         <h2 data-nl="Kom basketballen bij HBV The Jumpers" data-en="Come play basketball at HBV The Jumpers">Kom basketballen bij HBV The Jumpers</h2>
         <p data-nl="Stuur ons een bericht. We helpen je graag naar de juiste training, trainer of commissie." data-en="Send us a message. We are happy to guide you to the right practice, trainer or committee.">Stuur ons een bericht. We helpen je graag naar de juiste training, trainer of commissie.</p>
         <div class="actions">
-          <a class="btn" href="contact.html" data-nl="Vraag proeftraining aan" data-en="Request a trial practice">Vraag proeftraining aan</a>
+          <a class="btn" href="#registratie" data-nl="Vraag proeftraining aan" data-en="Request a trial practice">Vraag proeftraining aan</a>
           <a class="btn secondary" href="veelgestelde-vragen.html" data-nl="Lees veelgestelde vragen" data-en="Read FAQ">Lees veelgestelde vragen</a>
         </div>
       </div>
@@ -116,6 +132,8 @@
   </section>
 </main>
 
+<script type="text/javascript" src="https://registration-form.foys.tech/chunk-vendors.js"></script>
+<script type="text/javascript" src="https://registration-form.foys.tech/app.js"></script>
 <script src="js/mobile-menu.js"></script>
 <script src="js/language-toggle.js"></script>
 <script>

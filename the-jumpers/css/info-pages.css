@@ -415,6 +415,29 @@ h1 span { color: var(--orange-light); }
   line-height: 1.7;
 }
 
+.registration-section {
+  padding-top: clamp(44px, 6vw, 76px);
+}
+.registration-shell {
+  min-height: 640px;
+  padding: clamp(22px, 4vw, 44px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 24px 70px rgba(11,27,61,.12);
+}
+.registration-shell registration-form-entry {
+  display: block;
+  min-height: 560px;
+}
+.registration-note {
+  margin: 18px 0 0;
+  color: var(--soft);
+  font-size: .9rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(54px);
@@ -445,6 +468,7 @@ h1 span { color: var(--orange-light); }
   .fees-table { display: block; overflow-x: auto; }
   .fees-table th,
   .fees-table td { white-space: nowrap; }
+  .registration-shell { padding: 18px 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
