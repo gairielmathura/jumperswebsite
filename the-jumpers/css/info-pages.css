@@ -440,7 +440,7 @@ h1 span { color: var(--orange-light); }
 }
 .registration-copy .eyebrow { color: var(--orange); }
 .registration-copy h2 {
-  max-width: 10ch;
+  max-width: 13ch;
   margin: 14px 0 24px;
   color: var(--white);
   font-size: clamp(3.1rem, 5.1vw, 5.6rem);
@@ -449,6 +449,12 @@ h1 span { color: var(--orange-light); }
   overflow-wrap: normal;
   word-break: normal;
   hyphens: none;
+}
+.registration-copy h2 .keep-together {
+  display: inline-block;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 .registration-copy > p {
   max-width: 33rem;
@@ -520,7 +526,7 @@ h1 span { color: var(--orange-light); }
     min-height: auto;
     padding: 42px 28px;
   }
-  .registration-copy h2 { max-width: 12ch; }
+  .registration-copy h2 { max-width: 13ch; }
   .registration-shell { min-height: 580px; padding: 18px 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
